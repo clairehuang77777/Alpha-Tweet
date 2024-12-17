@@ -1,0 +1,214 @@
+.layout {
+  display: flex;
+  flex-direction: row;
+}
+
+
+.left-section {
+  width: 250px;
+}
+
+/*PopUP*/
+/*Tweet-Background*/
+
+.popup-background {
+  
+  background-color: rgba(255, 255, 255, 0.463);
+  opacity: 0.1;
+  z-index: 900;
+  position: fixed;
+    /* 固定在視窗 */
+    top: 0;
+    /* 從視窗頂部開始 */
+    left: 0;
+    /* 從視窗左側開始 */
+    width: 100vw;
+    /* 寬度為視窗寬度 */
+    height: 100vh;
+    /* 高度為視窗高度 */
+}
+
+/*PopUP*/
+/*Tweet*/
+
+.popup-tweet {
+  position: relative;
+  z-index: 1100;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  border: 0.5px solid lightgrey;
+  padding-left: 3px;
+  top: -300px;
+  left: -60px;
+}
+
+.popup-tweet-top-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding-left: 3px;
+  border-bottom: 0.5px solid lightgray;
+}
+
+.popup-tweet-top-area-close-btn{
+  width: 15px;
+  padding: 10px;
+}
+.popup-tweet-center-area {
+  display: flex;
+  flex-direction: row;
+  padding-top: 20px;
+}
+
+.popup-twee-LeftArea{
+  margin-left: 15px;
+  margin-right: 15px;
+
+}
+
+.popup-tweet-user-photo {
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+}
+
+.popup-tweet-RightArea {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-tweet-RightTopArea {
+  width: 530px;
+  border:0px solid;
+}
+
+.feeds-poster-name {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.popup-tweet-RightButtonArea{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+
+.tweet-button {
+  margin-right: 10px;
+  border-radius: 40px;
+  background-color: orangered;
+  color: white;
+  border: 0px;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+}
+
+/*PopUP*/
+/*Edit-Mode*/
+
+.Editmode-border {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  border: 0.5px solid lightgrey;
+  border-radius: 15px;
+  background-color: white;
+  z-index: 1100;
+  position: relative;
+}
+
+.Editmode-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding-left: 3px;
+  border-bottom: 0.5px solid lightgray;
+  align-items: center;
+}
+
+.save-btn {
+  margin-right: 10px;
+  border-radius: 40px;
+  background-color: orangered;
+  color: white;
+  border: 0px;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  margin-left: 380px;
+  margin-top: 5px;
+}
+
+.Editmode-top-area-close-btn{
+  width: 15px;
+  margin-left: 5px;
+  margin-top: 3px;
+}
+
+.Editmode-top-area-text {
+  margin-left: 30px;
+  font-weight: bold;
+}
+
+.Editmode-header-pic {
+  object-fit: fill;
+  position: relative;
+  width: 600px;
+  height: 250px;
+}
+
+.Editmode-user-pic {
+  position: absolute;
+  top: 230px;
+  left: 10px;
+  width: 120px;
+  border-radius: 50%;
+  border: 3px solid white;
+}
+
+.Editmode-edit-textarea {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-top: 50px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.inputBoxConatiner {
+  margin: 10px;
+  background-color: #f2f2f2;
+}
+
+label {
+  font-size: 0.8rem;
+  padding: 3px;
+}
+
+input {
+  background-color: #f2f2f2;
+  border-bottom-width: 2px solid #e6e6e6;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-right-width: 0px;
+  width: 565px;
+}
+
+#Editmode-intro{
+  background-color: #f2f2f2;
+    border-bottom-width: 2px solid #e6e6e6;
+    border-top-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    width: 565px;
+}
+
+.text-count {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-size: 0.8rem;
+}
