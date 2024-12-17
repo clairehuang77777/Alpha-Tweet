@@ -601,7 +601,7 @@
 .big-header {
   width: 1080px;
   display: flex;
-  border: 0.5px solid lightgrey;
+  // border: 0.5px solid lightgrey;
   height: 55px;
   align-items: center;
   padding-left: 20px;
@@ -739,7 +739,7 @@
 .Small-intro-username {
   font-size: 1.2rem;
   font-weight: bold;
-  ustify-content: center;
+  justify-content: center;
 }
 
 .Small-intro-id {
