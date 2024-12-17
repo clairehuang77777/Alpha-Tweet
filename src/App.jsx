@@ -8,8 +8,10 @@ function App() {
   const [popUp, setPopUp] = useState(false)
   const [editMode,setEditMode] = useState(false)
 
+  const basename = import.meta.env.VITE_BASE_URL
+
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <popUpContext.Provider value={{popUp, setPopUp, editMode, setEditMode}}>
         <Routes>
           <Route path='/' element={<MainPage />}/>
