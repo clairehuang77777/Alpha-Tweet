@@ -9,5 +9,9 @@ export default defineConfig({
   plugins: [react(),svgr()],
   server: {
     port: 3000
-  }
+  },
+  base:'/Alpha-Tweet/',
+  build: {
+    outDir: 'dist',
+  },
 })
