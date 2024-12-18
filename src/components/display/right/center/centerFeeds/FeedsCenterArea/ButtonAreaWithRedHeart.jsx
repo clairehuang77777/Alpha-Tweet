@@ -9,7 +9,7 @@ export const ButtonAreaWithRedHeart = () =>
             <div className="feeds-poster-ReplyNumber">76</div>
           </div>
           <div className="feeds-poster-heartArea">
-            <img className="feeds-poster-heartIcon" src={images.red-heart}></img>
+            <img className="feeds-poster-heartIcon" src={images.red_heart}></img>
             <div className="feeds-poster-heartNumber" style={{color:"red"}}>13</div>
           </div>
     </>

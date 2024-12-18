@@ -58,7 +58,7 @@ export const CenterFeedWithLocation = ({feedCount}) => {
     RightCenterButtonContent=<ButtonAreaWithRedHeart/>
     usernameContent = 'Jennie'
     useridContent = '@JennyrubyJen'
-    coverphotoContent= {images.user2}
+    coverphotoContent= images.user2
     postcontentContent ='Just Land down in LA. '
   }
 
