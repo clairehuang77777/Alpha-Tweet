@@ -1,5 +1,5 @@
 import { MainPage } from "./MainPage";
-import { LoginPage } from "./loginPage";
+import { LoginPage } from "./LoginPage";
 import { RegisterPage } from "./RegisterPage";
 import { BackendLoginPage } from "./BackendLoginPage";
 import { ReplyListPage } from "./ReplyListPage";
