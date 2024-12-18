@@ -7,11 +7,8 @@ import 'structured-clone'
 // <https://vitejs.dev/config/>
 export default defineConfig({
   plugins: [react(),svgr()],
-  server: {
-    port: 3000
-  },
-  base:'/Alpha-Tweet/',
+  base: '/Alpha-Tweet/', // 正確配置靜態資源的基底路徑
   build: {
-    outDir: 'dist',
+    outDir: 'dist', // 確保輸出目錄為 dist
   },
 })
