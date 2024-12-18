@@ -22,19 +22,21 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Deploy
+    
+      - name: Clean and install dependencies
         run: |
-          git config --global user.name $user_name
-          git config --global user.email $user_email
+          rm -rf node_modules
+          npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git remote set-url origin https://${github_token}@github.com/${repository}.git
           npm run deploy
-
         env:
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
           github_token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
