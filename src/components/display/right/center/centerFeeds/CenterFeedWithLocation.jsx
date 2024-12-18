@@ -27,7 +27,7 @@ export const CenterFeedWithLocation = ({feedCount}) => {
     RightCenterButtonContent=<ButtonArea/>
     usernameContent = 'Rosie'
     useridContent = '@RosienRose'
-    coverphotoContent= {images.user}
+    coverphotoContent= images.user
     postcontentContent ='Sleep tmr but tonight go CRAZY!!'
   }
 
@@ -36,7 +36,7 @@ export const CenterFeedWithLocation = ({feedCount}) => {
     RightCenterButtonContent=<ButtonAreaWithRedHeart/>
     usernameContent = 'Rosie'
     useridContent = '@RosienRose'
-    coverphotoContent= {images.user}
+    coverphotoContent= images.user
     postcontentContent ='Sleep tmr but tonight go CRAZY!!'
   }
   
@@ -47,7 +47,7 @@ export const CenterFeedWithLocation = ({feedCount}) => {
     RightCenterButtonContent=null
     usernameContent = 'Rosie'
     useridContent = '@RosienRose'
-    coverphotoContent= {images.user}
+    coverphotoContent= images.user
     postcontentContent ='Sleep tmr but tonight go CRAZY!!'
   }
 
