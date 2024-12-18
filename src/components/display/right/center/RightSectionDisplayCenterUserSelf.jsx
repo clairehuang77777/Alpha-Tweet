@@ -16,8 +16,8 @@ export const RightSectionDisplayCenterUserSelf = () => {
   let userquoteProps = ''
   let countOfFollowingProps= null
   let countOfFollowerProps = null
-  let coverphotoProps = document.querySelector('Intro-user-pic')?.src || {images.user}
-  let headerphotoProps = document.querySelector('intro-header-pic')?.src || {images.header}
+  let coverphotoProps = document.querySelector('Intro-user-pic')?.src || images.user
+  let headerphotoProps = document.querySelector('intro-header-pic')?.src || images.header
 
 
 

@@ -14,7 +14,7 @@ export const CenterFeedWithLocation = ({feedCount}) => {
   let RightCenterButtonContent=null
   let usernameContent = ''
   let useridContent = ''
-  let coverphotoContent = document.querySelector('feeds-user-photo')?.src || {images.user}
+  let coverphotoContent = document.querySelector('feeds-user-photo')?.src || images.user
   let postcontentContent =''
 
   if (location.pathname === '/' ||
