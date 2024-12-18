@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { clsx } from "clsx"
-
+import { images } from "../../../../../assets/images"
 
 export const RightSectionDisplayRightFollowBox = () => {
   const [followBoxCheck, setFollowBoxCheck] = useState(false)
@@ -12,7 +12,7 @@ export const RightSectionDisplayRightFollowBox = () => {
   return (
     <div className="right-section-container-followbox">
       <div className="followbox-left">
-        <img className="followbox-photo "src="/user.png" alt="userphoto"></img>
+        <img className="followbox-photo "src={images.user} alt="userphoto"></img>
       </div>
       <div className="followbox-center">
         <div className="followbox-center-name">Pizza Hut</div>

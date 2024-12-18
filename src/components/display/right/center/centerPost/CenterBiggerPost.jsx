@@ -1,10 +1,12 @@
+import { images } from "../../../../../assets/images"
+
 
 export const CenterBiggerPost = () => {
   return (
     <div className="bigger-post">
       <div className="bigger-post-top-area">
         <div className="bigger-post-top-area-left">
-          <img className="post-user-photo" src="./user.png" alt="feeds-photo"></img>
+          <img className="post-user-photo" src={images.user} alt="feeds-photo"></img>
         </div>
         <div className="bigger-post-top-area-right">
           <div className="feeds-poster-name">Apple</div>
@@ -35,10 +37,10 @@ export const CenterBiggerPost = () => {
         </div>
         <div className="bigger-post-button-area-icon">
           <div className="bigger-post-button-area-replyicon">
-            <img src="./comment.png" alt="replybtn"></img>
+            <img src={images.comment} alt="replybtn"></img>
           </div>
           <div className="bigger-post-button-area-likeicon">
-            <img src="./heart.png" alt="likebtn"></img>
+            <img src={images.heart} alt="likebtn"></img>
           </div>
         </div>
       </div>

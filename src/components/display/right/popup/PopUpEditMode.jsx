@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { useContext } from "react"
 import { popUpContext } from "../../popUpContext"
-
+import { images } from "../../../../assets/images"
 
 
 export const PopUpEditMode = () => {
@@ -20,16 +20,16 @@ export const PopUpEditMode = () => {
   <div className="Editmode">
     <div className="Editmode-header">
       <div className="Editmode-top-area">
-        <img src="/close.png" alt="closebtn" className="Editmode-top-area-close-btn" onClick={handleClickBtn}></img>
+        <img src={images.close} alt="closebtn" className="Editmode-top-area-close-btn" onClick={handleClickBtn}></img>
       </div>
       <div className="Editmode-top-area-text">編輯個人資料</div>
       <button className="save-btn" type="button">儲存</button>
     </div>
     <div className="Editmode-header-piczone">
-      <img className="Editmode-header-pic" src="/header.png" alt="Editmode-header-photo"></img>
+      <img className="Editmode-header-pic" src={images.header} alt="Editmode-header-photo"></img>
     </div>
     <div className="Editmode-user-piczone">
-      <img className="Editmode-user-pic" src="/user.png" alt="Editmode-user-pic"></img>
+      <img className="Editmode-user-pic" src={images.user} alt="Editmode-user-pic"></img>
     </div>
     <div className="Editmode-edit-textarea">
       <div className="inputBoxConatiner">

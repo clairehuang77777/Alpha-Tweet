@@ -5,7 +5,7 @@ import { CenterTabBar } from "./centerTabBar/centerTabBar"
 import { EditBtnZoneEditUser } from "./centerFeeds/FeedsCenterArea/EditBtnZoneEditUser"
 import { EditBtnZoneSubscript } from "./centerFeeds/FeedsCenterArea/EditBtnZoneSubscript"
 import { useLocation } from "react-router-dom"
-
+import { images } from "../../../../assets/images" 
 
 export const RightSectionDisplayCenterUserSelf = () => {
   const location = useLocation()
@@ -16,8 +16,8 @@ export const RightSectionDisplayCenterUserSelf = () => {
   let userquoteProps = ''
   let countOfFollowingProps= null
   let countOfFollowerProps = null
-  let coverphotoProps = document.querySelector('Intro-user-pic')?.src || '/user.png'
-  let headerphotoProps = document.querySelector('intro-header-pic')?.src || '/header.png'
+  let coverphotoProps = document.querySelector('Intro-user-pic')?.src || {images.user}
+  let headerphotoProps = document.querySelector('intro-header-pic')?.src || {images.header}
 
 
 

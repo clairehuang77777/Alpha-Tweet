@@ -2,6 +2,7 @@ import { useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { popUpContext } from "../../../popUpContext"
 import { clsx } from "clsx"
+import { images } from "../../../../../assets/images"
 
 export const CenterPost = () => {
   const {popup, setPopUp}= useContext(popUpContext)
@@ -15,7 +16,7 @@ export const CenterPost = () => {
     <>
     <div className="post">
       <div className="post-LeftArea">
-        <img className="post-user-photo" src="/user.png" alt="feeds-photo"></img>
+        <img className="post-user-photo" src={images.user} alt="feeds-photo"></img>
       </div>
       <div className={clsx("post-RightArea",{"popup":popup})}>
         <textarea className="post-RightTopArea">

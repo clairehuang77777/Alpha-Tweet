@@ -1,13 +1,15 @@
+import { images } from "../../../../../assets/images"
+
 export const OnlyOneUserList = ({userCount}) => {
 return (
   <>
   {Array(userCount).fill(null).map((_,index)=>(
     <div key={index} className="Small-intro">
       <div className="Small-intro-header-piczone">
-        <img className="Small-intro-header-pic" src="./header.png" alt="Small-intro-header-photo"></img>
+        <img className="Small-intro-header-pic" src={images.header} alt="Small-intro-header-photo"></img>
       </div>
       <div className="Small-intro-user-pic-zone">
-        <img className="Small-intro-user-pic" src="./user.png" alt="Small-intro-user-pic"></img>
+        <img className="Small-intro-user-pic" src={images.user} alt="Small-intro-user-pic"></img>
       </div>
       <div className="Small-intro-greyzone">
         <div className="Small-intro-usernameid">
@@ -17,13 +19,13 @@ return (
         <div className="Small-intro-replyandlike">
           <div className="Small-intro-reply">
             <div className="Small-intro-replyicon">
-              <img className="Small-intro-replyicon-content"src="/comment.png" alt="replybtn"></img>
+              <img className="Small-intro-replyicon-content"src={images.comment} alt="replybtn"></img>
             </div>
             <div className="Small-intro-reply-num">1.5k</div>
           </div>
           <div className="Small-intro-like">
             <div className="Small-intro-likeicon">
-              <img className="Small-intro-likeicon-content"src="/heart.png" alt="likebtn"></img>
+              <img className="Small-intro-likeicon-content"src={images.heart} alt="likebtn"></img>
             </div>
             <div className="Small-intro-like-num">20K</div>
           </div>

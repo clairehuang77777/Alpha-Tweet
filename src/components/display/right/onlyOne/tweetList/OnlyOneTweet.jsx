@@ -1,10 +1,12 @@
+import { images } from "../../../../../assets/images"
+
 export const OnlyOneTweet=({tweetCount})=>{
   return (
     Array(tweetCount).fill(null).map((_,index)=>(
     <>
     <div key={index} className="adminMain">
   <div className="adminMain-LeftArea">
-    <img src="/user.png" className="adminMain-user-photo"></img>
+    <img src={images.user} className="adminMain-user-photo"></img>
   </div>
   <div className="adminMain-RightArea">
     <div className="adminMain-RightTopArea">

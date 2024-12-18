@@ -3,6 +3,7 @@ import { CenterFeed } from "./CenterFeed"
 import { ButtonArea } from "./FeedsCenterArea/ButtonArea"
 import { ReplyArea } from "./FeedsCenterArea/ReplyArea"
 import {ButtonAreaWithRedHeart} from "./FeedsCenterArea/ButtonAreaWithRedHeart"
+import { images } from "../../../../../assets/images"
 
 export const CenterFeedWithLocation = ({feedCount}) => {
 
@@ -13,7 +14,7 @@ export const CenterFeedWithLocation = ({feedCount}) => {
   let RightCenterButtonContent=null
   let usernameContent = ''
   let useridContent = ''
-  let coverphotoContent = document.querySelector('feeds-user-photo')?.src || '/user.png'
+  let coverphotoContent = document.querySelector('feeds-user-photo')?.src || {images.user}
   let postcontentContent =''
 
   if (location.pathname === '/' ||

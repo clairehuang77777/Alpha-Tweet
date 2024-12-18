@@ -1,6 +1,7 @@
 import {useLocation} from 'react-router-dom'
 import {CenterHeader} from './CenterHeader'
-import backImage from '/back.png'
+import { images } from '../../../../../assets/images'
+
 
 export const CenterWithLocation = () => {
   let location = useLocation().pathname
@@ -18,21 +19,21 @@ export const CenterWithLocation = () => {
     rightTitle="首頁"
   } 
   else if (location==='/replylist'){
-    leftcontent=<img src={backImage} className="middle-header-leftarea-img"></img>
+    leftcontent=<img src={images.back}className="middle-header-leftarea-img"></img>
     rightTitle="推文"
   }
   else if (location==='/user/self' || 
     location==='/user/self/likes' || 
     location==='/user/self/reply'
   ){
-    leftcontent=<img src={backImage} className="middle-header-leftarea-img"></img>
+    leftcontent=<img src={images.back}className="middle-header-leftarea-img"></img>
     rightTitle="RosienRose"
     feedCount=25
   }else if (location==='/user/other' || 
     location==='/user/other/likes' || 
     location==='/user/other/reply'
   ){
-    leftcontent=<img src={backImage} className="middle-header-leftarea-img"></img>
+    leftcontent=<img src={images.back}className="middle-header-leftarea-img"></img>
     rightTitle="Jennie"
     feedCount=18
   }
