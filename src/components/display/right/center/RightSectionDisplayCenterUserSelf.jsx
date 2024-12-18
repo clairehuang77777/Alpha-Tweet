@@ -27,10 +27,10 @@ export const RightSectionDisplayCenterUserSelf = () => {
       usernameProps="Jenny"
       useridProps="@JennyrubyJen"
       userquoteProps='Pretty Girls dont do drama'
-      coverphotoProps = {images.user2}
+      coverphotoProps = images.user2
       countOfFollowingProps= 1093
       countOfFollowerProps =8937
-      headerphotoProps={images.header2}
+      headerphotoProps=images.header2
 
     }
 
@@ -42,10 +42,10 @@ export const RightSectionDisplayCenterUserSelf = () => {
     usernameProps="Rosie"
     useridProps="@RosienRose"
     userquoteProps='Meet me at APT!'
-    coverphotoProps = {images.user}
+    coverphotoProps = images.user
     countOfFollowingProps= 1047
     countOfFollowerProps = 8459
-    headerphotoProps={images.header}
+    headerphotoProps=images.header
   }
   return (
     <>
