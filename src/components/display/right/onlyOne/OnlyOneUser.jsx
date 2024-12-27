@@ -7,7 +7,7 @@ export const OnlyOneUser = () => {
     <>
     <OnlyOneHeader headername={"使用者列表"} />
     <OnlyOneUserSection>
-      <OnlyOneUserList userCount={20}/>
+      <OnlyOneUserList/>
     </OnlyOneUserSection>
     </>
   )

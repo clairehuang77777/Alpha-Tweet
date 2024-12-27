@@ -168,6 +168,7 @@
   height: 30px;
   border-radius: 45px;
   padding: 3px;
+  object-fit: cover;
 }
 
 /*Right Section -- Center*/
@@ -253,6 +254,7 @@
   margin-left: 30px;
   margin-top: 30px;
   z-index: 200;
+  overflow: scroll;
   &.popup {
       background-color: transparent;
     }
@@ -277,12 +279,16 @@
   border-bottom:0.5px solid grey;
 }
 
+.followbox-center-name{
+  color: black;
+}
 .followbox-photo {
   width: 40px;
   height: 40px;
   border-radius: 45px;
   padding-left: 5px;
   padding-top: 3px;
+  object-fit: cover;
 }
 
 .followbox-center {
@@ -434,7 +440,7 @@
 }
 
 .intro-header-pic {
-  object-fit: fill;
+  object-fit: cover;
   position: relative;
   width: 600px;
   height: 200px;
@@ -442,6 +448,7 @@
 
 .Intro-user-pic {
   position: absolute;
+  object-fit: cover;
   top: 180px;
   left: 10px;
   border-radius: 50%;
@@ -626,13 +633,14 @@
   width: 50px;
   display: flex;
   align-items: center;
+  padding-left: 10px;
 }
 
 .adminMain-user-photo {
   width: 30px;
   height: 30px;
   border-radius: 50px;
-  padding-left: 10px;
+  object-fit: cover;
 }
 
 .adminMain-RightArea {
@@ -686,6 +694,7 @@
 /*Only One*/
 /*User List*/
 .Small-intro {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 250px;
@@ -701,7 +710,6 @@
 
 .Small-intro-header-pic {
   object-fit: fill;
-  position: relative;
   width: 250px;
   height: 150px;
   border-top-left-radius: 25px;
@@ -710,9 +718,10 @@
 
 .Small-intro-user-pic {
   position: absolute;
+  object-fit: cover;
   width: 90px;
   height: 90px;
-  top: 160px;
+  top: 100px;
   left: 85px;
   border-radius: 50px;
   border: 3px solid white;

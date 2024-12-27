@@ -25,7 +25,7 @@ export const LeftSectionButton = (props) => {
         navigate("/")
       }
       else if(props.id===5){
-        navigate("/user/self")
+        navigate("/user/U01")
       }
       else if(props.id===7){
         navigate("/login")

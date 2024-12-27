@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 
-export const ReplyArea = () =>
+export const ReplyArea = ({displayReplyeeName}) =>
 {
   const navigate = useNavigate()
 
@@ -12,7 +12,7 @@ export const ReplyArea = () =>
     <>
           <div className="feeds-RightCenterReplyArea-reply">回覆</div>
           <div className="feeds-RightCenterReplyArea-replyPerson"
-          onClick={handleOtherBtn}>@Jennie</div>
+          onClick={handleOtherBtn}>@{displayReplyeeName || "Unknown"}</div>
     </>
   )
 }

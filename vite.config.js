@@ -11,4 +11,13 @@ export default defineConfig({
   build: {
     outDir: 'dist', // 確保輸出目錄為 dist
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },
 })
