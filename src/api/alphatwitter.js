@@ -1,5 +1,4 @@
-import axios from "axios";
-
+const axios = window.axios;
 
 const base_URL = "/api";
 //CRUD串接api設定

@@ -8,10 +8,11 @@ import 'structured-clone'
 export default defineConfig({
   plugins: [react(),svgr()],
   base: '/Alpha-Tweet/', // 正確配置靜態資源的基底路徑
+  publicDir: 'public', // 指定 public 資料夾
   build: {
-    rollupOptions: {
-      external: ['axios'],
-    },
+    // rollupOptions: {
+    //   external: ['axios'],
+    // },
     outDir: 'dist', // 確保輸出目錄為 dist
   },
   server: {
