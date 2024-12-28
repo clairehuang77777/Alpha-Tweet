@@ -2,7 +2,7 @@
 import express from 'express';
 import mysql from 'mysql2/promise';
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000 // 使用環境變數設置 API 埠
 import cors from 'cors';
 app.use(cors());
 
@@ -24,11 +24,11 @@ let requestReplyID = ''
 
 //建立simple query連線,
 const connection = await mysql.createConnection({
-  host: 'localhost',
+  host: 'host.docker.internal', // 指向宿主機的 MySQL
   user: 'root',
-  database: 'alphaTwitter',
   password: 'Jayesslee0604@',
-  port: 3306
+  database: 'alphaTwitter',
+  port: 3306, // 本地 MySQL 的埠
 });
 
 // 把結果返回到3000的response上

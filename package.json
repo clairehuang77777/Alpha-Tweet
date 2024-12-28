@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "start": "node index.js"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -44,5 +45,8 @@
     "backend"
   ],
   "author": "claire",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+  "node": "14.18.1"
+}
 }
