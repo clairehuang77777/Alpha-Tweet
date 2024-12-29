@@ -1,5 +1,5 @@
 import { images } from "../../../../../assets/images"
-import { getAllFeeds } from "../../../../../api/alphatwitter"
+import { getAllFeeds } from "../../../../../../../backend/api/alphatwitter"
 import { useContext, useEffect } from "react"
 import { feedsContext } from "../../../../../feedsContext"
 export const OnlyOneTweet=()=>{

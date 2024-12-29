@@ -6,7 +6,7 @@ import { ReplyArea } from "./FeedsCenterArea/ReplyArea";
 import { ButtonAreaWithRedHeart } from "./FeedsCenterArea/ButtonAreaWithRedHeart";
 import { myFeedsContext } from "../../../../../myFeedsContext";
 import { myLikesContext } from "../../../../../myLikesContext";
-import { getSingleUserFeed, getSingleUserLike, getSingleUserReply } from "../../../../../api/alphatwitter";
+import { getSingleUserFeed, getSingleUserLike, getSingleUserReply } from "../../../../../../../backend/api/alphatwitter";
 
 export const CenterFeedWithLocation = () => {
   const { myFeeds, setMyFeeds } = useContext(myFeedsContext);

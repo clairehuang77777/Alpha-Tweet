@@ -1,5 +1,5 @@
 import { CenterFeed } from "../centerFeeds/CenterFeed"
-import { getUserFollowingFeeds } from "../../../../../api/alphatwitter"
+import { getUserFollowingFeeds } from "../../../../../../../backend/api/alphatwitter"
 import { useEffect, useContext } from "react"
 import { feedsIFollowContext } from "../../../../../feedsIFollowContext"
 

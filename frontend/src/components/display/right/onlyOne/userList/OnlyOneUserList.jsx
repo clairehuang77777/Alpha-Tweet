@@ -1,5 +1,5 @@
 import { images } from "../../../../../assets/images"
-import { getAllUserData } from "../../../../../api/alphatwitter"
+import { getAllUserData } from "../../../../../../../backend/api/alphatwitter"
 import { useContext, useEffect } from "react"
 import { userContext } from "../../../../../userContext"
 

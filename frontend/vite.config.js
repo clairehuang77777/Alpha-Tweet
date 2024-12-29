@@ -7,7 +7,7 @@ import 'structured-clone'
 // <https://vitejs.dev/config/>
 export default defineConfig({
   plugins: [react(),svgr()],
-  base: '/Alpha-Tweet/', // 正確配置靜態資源的基底路徑
+  base: process.env.VITE_BASE_URL || '/Alpha-Tweet/', // 正確配置靜態資源的基底路徑
   publicDir: 'public', // 指定 public 資料夾
   build: {
     // rollupOptions: {
