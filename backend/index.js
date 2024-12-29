@@ -1,8 +1,15 @@
 //建立server
 import express from 'express';
-import mysql from 'mysql2/promise';
+// import mysql from 'mysql2/promise';
+import pkg from 'pg'
+import dotenv from 'dotenv'
+dotenv.config()
+
+
+const { Pool } = pkg;
 const app = express()
 const port = process.env.PORT || 3000 // 使用環境變數設置 API 埠
+
 import cors from 'cors';
 app.use(cors());
 
@@ -11,7 +18,7 @@ app.use(cors());
 // 建立mySQL連線
 let resultsOfUsers = []
 let resultOfSingleUser = []
-let resultOfUserFollowingFeeds = []
+// let resultOfUserFollowingFeeds = []
 let resultOfFeeds = []
 let resultOfSingleUserFeeds = []
 let resultOfSingleUserReply = []
@@ -22,21 +29,41 @@ let requestUserID = ''
 let requestLikerID = ''
 let requestReplyID = ''
 
-//建立simple query連線,
-const connection = await mysql.createConnection({
-  host: 'host.docker.internal', // 指向宿主機的 MySQL
-  user: 'root',
-  password: 'Jayesslee0604@',
-  database: 'alphaTwitter',
-  port: 3306, // 本地 MySQL 的埠
+// //建立simple query連線,
+// const connection = await mysql.createConnection({
+//   host: 'localhost', // 指向宿主機的 MySQL
+//   user: 'root',
+//   password: 'Jayesslee0604@',
+//   database: 'alphaTwitter',
+//   port: 3306, // 本地 MySQL 的埠
+// });
+
+//建立render postgreSQL連線
+const pool = new Pool({
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false }, // 啟用 SSL 並忽略未授權的憑證,
 });
+console.log('Database URL', process.env.DATABASE_URL)
+
+//測試連線
+pool.connect()
+    .then(client => {
+        console.log('Connected to PostgreSQL');
+        return client.release();
+    })
+    .catch(err => console.error('Connection error', err.stack));
+
+//測試查詢
+pool.query('SELECT * FROM user LIMIT 1;')
+      .then(res => console.log(res.rows))
+      .catch(err => console.error(err.stack));
 
 // 把結果返回到3000的response上
 // 製作api 'GET users'
 app.get('/api/users', async(req, res) => {
   try {
-    const [users] = await connection.query(
-      'SELECT * FROM `user`'
+    const { rows: users } = await pool.query(
+      'SELECT * FROM "user";'
     )
     resultsOfUsers = users;
     // console.log(resultsOfUsers); // results contains rows returned by server
@@ -60,8 +87,8 @@ app.get('/api/users/:UserID',async(req, res) => {
   requestUserID = req.params.UserID
   // 儲存查詢結果
     try {
-      const [singleUser] = await connection.query(
-        'SELECT * FROM `user` WHERE `userID` = ?',[requestUserID])
+      const { rows: singleUser } = await pool.query(
+        'SELECT * FROM "user" WHERE "userID" = ?;',[requestUserID])
       resultOfSingleUser = singleUser;
       console.log(resultOfSingleUser); 
       res.send({
@@ -79,33 +106,31 @@ app.get('/api/users/:UserID',async(req, res) => {
 // 製作api 'GET result Of User Following Feeds'
 app.get('/api/UserFollowingFeeds', async(req, res) => {
   try {
-    const [UserFollowingFeeds] = await connection.query(
-      'SELECT * FROM `UserFollowingFeeds`'
+    const { rows: UserFollowingfeeds } = await pool.query(
+      'SELECT * FROM "UserFollowingFeeds";'
     )
-    resultOfUserFollowingFeeds = UserFollowingFeeds;
     // console.log(resultsOfUsers); // results contains rows returned by server
     res.send({
         status:"success",
         message: "Data fetched successfully",
-        data: resultOfUserFollowingFeeds})
-    return resultOfUserFollowingFeeds.data
+        data: UserFollowingfeeds})
+    return UserFollowingfeeds.data
   } catch (err) {
     console.log(err);
     res.send({
         status:"failed"
       })
   }
-  res.send(resultOfUserFollowingFeeds)
 })
 
 
 // 製作api 'GET result Of All Feeds'
 app.get('/api/Feeds', async(req, res) => {
   try {
-    const [Feeds] = await connection.query(
-      'SELECT * FROM `Feeds`'
+    const { rows: feeds } = await pool.query(
+      'SELECT * FROM "Feeds";'
     )
-    resultOfFeeds = Feeds;
+    resultOfFeeds = feeds;
     // console.log(resultsOfUsers); // results contains rows returned by server
     res.send({
         status:"success",
@@ -122,9 +147,9 @@ app.get('/api/Feeds/:UserID',async(req, res) => {
   requestUserID = req.params.UserID
   // 儲存查詢結果
     try {
-      const [singleUserFeed] = await connection.query(
-        'SELECT * FROM `Feeds` WHERE `userID` = ?',[requestUserID])
-      resultOfSingleUserFeeds = singleUserFeed;
+      const { rows: singleUserFeeds } = await pool.query(
+        'SELECT * FROM "Feeds" WHERE "userID" = ?',[requestUserID])
+      resultOfSingleUserFeeds = singleUserFeeds;
       console.log(resultOfSingleUserFeeds); 
       res.send({
         status:"success",
@@ -146,8 +171,8 @@ app.get('/api/replies/:ReplierID',async(req, res) => {
   console.log('Query content:', requestReplyID);
   // 儲存查詢結果
     try {
-      const [singleUserReply] = await connection.query(
-        'SELECT * FROM `FirstReplyTable` WHERE `ReplierID` = ?',[requestReplyID])
+      const { rows: singleUserReply } = await pool.query(
+        'SELECT * FROM "FirstReplyTable" WHERE "ReplierID" = ?',[requestReplyID])
         console.log('Query Result:', singleUserReply);
       resultOfSingleUserReply = singleUserReply;
       console.log(resultOfSingleUserReply); 
@@ -169,8 +194,8 @@ app.get('/api/likes/:LikerUserID',async(req, res) => {
   requestLikerID = req.params.LikerUserID
   // 儲存查詢結果
     try {
-      const [singleUserReply] = await connection.query(
-        'SELECT * FROM `LikeJoinFeeds` WHERE `LikerUserID` = ?',[requestLikerID])
+      const { rows: singleUserReply } = await pool.query(
+        'SELECT * FROM "LikeJoinFeeds" WHERE "LikerUserID" = ?',[requestLikerID])
       resultOfSingleUserLike = singleUserReply;
       res.send({
         status:"success",
