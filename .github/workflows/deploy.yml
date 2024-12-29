@@ -12,31 +12,36 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [14.18.1]
 
     steps:
+      # 檢出專案代碼
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      # 設置 Node.js 環境
       - name: Set up Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
     
-      - name: Clean and install dependencies
+      # 切換到前端目錄並安裝依賴
+      - name: Install frontend dependencies
+        working-directory: ./frontend
         run: |
           rm -rf node_modules
           npm ci
 
-      - name: Build project
+      # 打包前端專案
+      - name: Build frontend project
+        working-directory: ./frontend
         run: npm run build
 
+      # 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
+        working-directory: ./frontend
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git remote set-url origin https://${{secrets.DEPLOY_SECRET}}@github.com/${{github.repository}}.git
-          npm run deploy
-        env:
-          github_token: ${{ secrets.DEPLOY_SECRET }}
-          repository: ${{ github.repository }}
+          npx gh-pages -d dist
