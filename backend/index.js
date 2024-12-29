@@ -11,7 +11,9 @@ const app = express()
 const port = process.env.PORT || 3000 // 使用環境變數設置 API 埠
 
 import cors from 'cors';
-app.use(cors());
+app.use(cors({
+  origin: '*',
+}));
 
 
 
@@ -76,7 +78,7 @@ app.get('/api/users', async(req, res) => {
   } catch (err) {
     console.log(err);
     res.send({
-      status:"failed"
+      status:"failed",  error: err.message
     })
   }
 })
