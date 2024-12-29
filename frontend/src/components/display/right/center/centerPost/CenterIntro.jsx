@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react"
 import { myIntroDataContext } from "../../../../../myIntroDataContext"
 import { useParams } from "react-router-dom"
-import { getSingleUserData } from "../../../../../api/alphatwitter"
+import { getSingleUserData } from "../../../../../../../backend/api/alphatwitter"
 
 export const CenterIntro = ({editBtnZone}) => {
 const {myIntroData, setMyIntroData} = useContext(myIntroDataContext)

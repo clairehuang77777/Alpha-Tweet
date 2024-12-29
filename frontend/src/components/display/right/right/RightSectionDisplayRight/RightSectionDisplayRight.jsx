@@ -2,7 +2,7 @@ import { RightSectionDisplayRightFollowBox } from './RightSectionDisplayRightFol
 import { clsx } from "clsx"
 import { useContext,useState,useEffect } from "react"
 import { popUpContext } from "../../../popUpContext"
-import { getAllUserData } from '../../../../../api/alphatwitter'
+import { getAllUserData } from '../../../../../../../backend/api/alphatwitter'
 
 export const RightSectionDisplayRight = () => {
   const {popUp}= useContext(popUpContext)
