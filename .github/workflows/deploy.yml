@@ -18,6 +18,11 @@ jobs:
       # 檢出專案代碼
       - name: Checkout repository
         uses: actions/checkout@v2
+      
+      - name: Print directory structure
+        run: |
+          pwd
+          ls -R
 
       # 設置 Node.js 環境
       - name: Set up Node.js ${{ matrix.node-version }}
@@ -25,21 +30,25 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}      
       
-      
-      - name: Change to frontend directory
-        run: cd frontend
-    
-      # 切換到前端目錄並安裝依賴
-      - name: Install frontend dependencies
+      - name: Navigate to frontend directory
+        working-directory: ./frontend
+        run: |
+          echo "Navigated to frontend directory"
+
+      - name: Install dependencies
+        working-directory: ./frontend
         run: |
           npm install
 
-      # 打包前端專案
-      - name: Build frontend project
-        run: npm run build
+      - name: Build project
+        working-directory: ./frontend
+        run: |
+          npm run build
+
 
       # 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
+        working-directory: ./frontend
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
