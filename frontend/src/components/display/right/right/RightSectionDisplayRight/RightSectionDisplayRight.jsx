@@ -2,7 +2,8 @@ import { RightSectionDisplayRightFollowBox } from './RightSectionDisplayRightFol
 import { clsx } from "clsx"
 import { useContext,useState,useEffect } from "react"
 import { popUpContext } from "../../../popUpContext"
-import { getAllUserData } from '../../../../../../../backend/api/alphatwitter'
+import { getAllUserData, base_URL } from '../../../../../../../backend/api/alphatwitter'
+
 
 export const RightSectionDisplayRight = () => {
   const {popUp}= useContext(popUpContext)
@@ -26,6 +27,7 @@ export const RightSectionDisplayRight = () => {
   const fetchUserData = async() => {
     try {
     const showUserData = await getAllUserData()
+    console.log('Fetching user data from:', base_URL);
     if (isMounted) {
         setShowUserData(showUserData); // 将获取的数据保存到状态
         }

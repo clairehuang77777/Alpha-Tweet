@@ -2,6 +2,7 @@ const axios = window.axios;
 
 const base_URL = "https://alpha-tweet-backend.onrender.com";
 //CRUD串接api設定
+console.log('Base URL:', base_URL);
 
 export async function getAllUserData(){
   try { 
