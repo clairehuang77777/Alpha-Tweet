@@ -85,26 +85,31 @@ app.get('/api/users', async(req, res) => {
 })
 
 // 製作api 'GET single users'
-app.get('/api/users/:UserID',async(req, res) => {
-  //從網址上拉下要查詢的UserID
-  requestUserID = req.params.UserID
-  // 儲存查詢結果
-    try {
-      const { rows: singleUser } = await pool.query(
-        'SELECT * FROM "user" WHERE "userID" = $1;',[requestUserID])
-      resultOfSingleUser = singleUser;
-      console.log(resultOfSingleUser); 
-      res.send({
-        status:"success",
-        message: "Data fetched successfully",
-        data: resultOfSingleUser})
-    } catch (err) {
-      console.log(err);
-      res.send({
-        status:"failed"
-      })
+app.get('/api/users/:UserID', async (req, res) => {
+  const { UserID } = req.params; // 提取 URL 中的 UserID
+  try {
+    const { rows: singleUser } = await pool.query(
+      'SELECT * FROM "user" WHERE "UserID" = $1;', [UserID] // 修正佔位符
+    );
+    if (singleUser.length === 0) {
+      return res.status(404).send({
+        status: "failed",
+        message: "User not found"
+      });
     }
-})
+    res.send({
+      status: "success",
+      message: "Data fetched successfully",
+      data: singleUser
+    });
+  } catch (err) {
+    console.error('[Error in /api/users/:UserID]', err.message);
+    res.status(500).send({
+      status: "failed",
+      error: err.message
+    });
+  }
+});
 
 // 製作api 'GET result Of User Following Feeds'
 app.get('/api/UserFollowingFeeds', async(req, res) => {
