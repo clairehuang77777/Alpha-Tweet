@@ -150,72 +150,90 @@ app.get('/api/Feeds', async(req, res) => {
 })
 
 // 製作api 'GET result Of Single User Feeds'
-app.get('/api/Feeds/:UserID',async(req, res) => {
-  //從網址上拉下要查詢的UserID
-  requestUserID = req.params.UserID
-  // 儲存查詢結果
-    try {
-      const { rows: singleUserFeeds } = await pool.query(
-        'SELECT * FROM "Feeds" WHERE "userID" = $1',[requestUserID])
-      resultOfSingleUserFeeds = singleUserFeeds;
-      console.log(resultOfSingleUserFeeds); 
-      res.send({
-        status:"success",
-        message: "Data fetched successfully",
-        data: resultOfSingleUserFeeds})
-    } catch (err) {
-      console.log(err);
-      res.send({
-        status:"failed"
-      })
+app.get('/api/Feeds/:UserID', async (req, res) => {
+  const { UserID } = req.params; // 提取 URL 中的 UserID
+  try {
+    const { rows: singleUserFeeds } = await pool.query(
+      'SELECT * FROM "Feeds" WHERE "UserID" = $1;', [UserID]
+    );
+    if (singleUserFeeds.length === 0) {
+      return res.status(404).send({
+        status: "failed",
+        message: "No feeds found for this user"
+      });
     }
-})
+    console.log('[Query Result - Feeds]:', singleUserFeeds);
+    res.send({
+      status: "success",
+      message: "Data fetched successfully",
+      data: singleUserFeeds
+    });
+  } catch (err) {
+    console.error('[Error in /api/Feeds/:UserID]', err.message);
+    res.status(500).send({
+      status: "failed",
+      error: err.message
+    });
+  }
+});
 
 
 // 製作api 'GET User-Reply page'
-app.get('/api/replies/:ReplierID',async(req, res) => {
-  //從網址上拉下要查詢的UserID
-  requestReplyID = req.params.ReplierID
-  console.log('Query content:', requestReplyID);
-  // 儲存查詢結果
-    try {
-      const { rows: singleUserReply } = await pool.query(
-        'SELECT * FROM "FirstReplyTable" WHERE "ReplierID" = $1',[requestReplyID])
-        console.log('Query Result:', singleUserReply);
-      resultOfSingleUserReply = singleUserReply;
-      console.log(resultOfSingleUserReply); 
-      res.send({
-        status:"success",
-        message: "Data fetched successfully",
-        data: resultOfSingleUserReply})
-    } catch (err) {
-      console.log(err);
-      res.send({
-        status:"failed"
-      })
+app.get('/api/replies/:ReplierID', async (req, res) => {
+  const { ReplierID } = req.params; // 提取 URL 中的 ReplierID
+  try {
+    const { rows: singleUserReply } = await pool.query(
+      'SELECT * FROM "FirstReplyTable" WHERE "ReplierID" = $1;', [ReplierID]
+    );
+    if (singleUserReply.length === 0) {
+      return res.status(404).send({
+        status: "failed",
+        message: "No replies found for this user"
+      });
     }
-})
+    console.log('[Query Result - Replies]:', singleUserReply);
+    res.send({
+      status: "success",
+      message: "Data fetched successfully",
+      data: singleUserReply
+    });
+  } catch (err) {
+    console.error('[Error in /api/replies/:ReplierID]', err.message);
+    res.status(500).send({
+      status: "failed",
+      error: err.message
+    });
+  }
+});
 
 // 製作api 'GET User-Like page'
-app.get('/api/likes/:LikerUserID',async(req, res) => {
-  //從網址上拉下要查詢的UserID
-  requestLikerID = req.params.LikerUserID
-  // 儲存查詢結果
-    try {
-      const { rows: singleUserReply } = await pool.query(
-        'SELECT * FROM "LikeJoinFeeds" WHERE "LikerUserID" = $1',[requestLikerID])
-      resultOfSingleUserLike = singleUserReply;
-      res.send({
-        status:"success",
-        message: "Data fetched successfully",
-        data: resultOfSingleUserLike})
-    } catch (err) {
-      console.log(err);
-      res.send({
-        status:"failed"
-      })
+app.get('/api/likes/:LikerUserID', async (req, res) => {
+  const { LikerUserID } = req.params; // 提取 URL 中的 LikerUserID
+  try {
+    const { rows: singleUserLike } = await pool.query(
+      'SELECT * FROM "LikeJoinFeeds" WHERE "LikerUserID" = $1;', [LikerUserID]
+    );
+    if (singleUserLike.length === 0) {
+      return res.status(404).send({
+        status: "failed",
+        message: "No likes found for this user"
+      });
     }
-})
+    console.log('[Query Result - Likes]:', singleUserLike);
+    res.send({
+      status: "success",
+      message: "Data fetched successfully",
+      data: singleUserLike
+    });
+  } catch (err) {
+    console.error('[Error in /api/likes/:LikerUserID]', err.message);
+    res.status(500).send({
+      status: "failed",
+      error: err.message
+    });
+  }
+});
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
