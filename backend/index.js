@@ -91,7 +91,7 @@ app.get('/api/users/:UserID',async(req, res) => {
   // 儲存查詢結果
     try {
       const { rows: singleUser } = await pool.query(
-        'SELECT * FROM "user" WHERE "userID" = ?;',[requestUserID])
+        'SELECT * FROM "user" WHERE "userID" = $1;',[requestUserID])
       resultOfSingleUser = singleUser;
       console.log(resultOfSingleUser); 
       res.send({
@@ -151,7 +151,7 @@ app.get('/api/Feeds/:UserID',async(req, res) => {
   // 儲存查詢結果
     try {
       const { rows: singleUserFeeds } = await pool.query(
-        'SELECT * FROM "Feeds" WHERE "userID" = ?',[requestUserID])
+        'SELECT * FROM "Feeds" WHERE "userID" = $1',[requestUserID])
       resultOfSingleUserFeeds = singleUserFeeds;
       console.log(resultOfSingleUserFeeds); 
       res.send({
@@ -175,7 +175,7 @@ app.get('/api/replies/:ReplierID',async(req, res) => {
   // 儲存查詢結果
     try {
       const { rows: singleUserReply } = await pool.query(
-        'SELECT * FROM "FirstReplyTable" WHERE "ReplierID" = ?',[requestReplyID])
+        'SELECT * FROM "FirstReplyTable" WHERE "ReplierID" = $1',[requestReplyID])
         console.log('Query Result:', singleUserReply);
       resultOfSingleUserReply = singleUserReply;
       console.log(resultOfSingleUserReply); 
@@ -198,7 +198,7 @@ app.get('/api/likes/:LikerUserID',async(req, res) => {
   // 儲存查詢結果
     try {
       const { rows: singleUserReply } = await pool.query(
-        'SELECT * FROM "LikeJoinFeeds" WHERE "LikerUserID" = ?',[requestLikerID])
+        'SELECT * FROM "LikeJoinFeeds" WHERE "LikerUserID" = $1',[requestLikerID])
       resultOfSingleUserLike = singleUserReply;
       res.send({
         status:"success",

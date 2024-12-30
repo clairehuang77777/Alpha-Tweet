@@ -1,11 +1,11 @@
 const axios = window.axios;
 
-const base_URL = "https://alpha-tweet-backend.onrender.com/api";
+const base_URL = "https://alpha-tweet-backend.onrender.com";
 //CRUD串接api設定
 
 export async function getAllUserData(){
   try { 
-    const res = await axios.get(`${base_URL}/users`);
+    const res = await axios.get(`${base_URL}/api/users`);
     console.log(res.data.data)
     return res.data.data
   }
@@ -17,7 +17,7 @@ export async function getAllUserData(){
 
 export async function getAllFeeds(){
   try { 
-    const res = await axios.get(`${base_URL}/Feeds`);
+    const res = await axios.get(`${base_URL}/api/Feeds`);
     console.log(res.data.data)
     return res.data.data
   }
@@ -28,7 +28,7 @@ export async function getAllFeeds(){
 
 export async function getUserFollowingFeeds(){
   try { 
-    const res = await axios.get(`${base_URL}/UserFollowingFeeds`);
+    const res = await axios.get(`${base_URL}/api/UserFollowingFeeds`);
     console.log(res.data.data)
     return res.data.data
   }
@@ -38,8 +38,9 @@ export async function getUserFollowingFeeds(){
 }
 
 export async function getSingleUserFeed(UserID){
+  console.log('[getSingleUserFeed] UserID:', UserID); // 調試
   try { 
-    const res = await axios.get(`${base_URL}/Feeds/${UserID}`);
+    const res = await axios.get(`${base_URL}/api/Feeds/${UserID}`);
     console.log(res.data)
     return res.data.data
   }
@@ -50,7 +51,7 @@ export async function getSingleUserFeed(UserID){
 
 export async function getSingleUserData(UserID){
   try { 
-    const res = await axios.get(`${base_URL}/Users/${UserID}`);
+    const res = await axios.get(`${base_URL}/api/users/${UserID}`);
     console.log(res.data)
     return res.data.data
   }
@@ -62,7 +63,7 @@ export async function getSingleUserData(UserID){
 
 export async function getSingleUserLike(LikerUserID){
   try { 
-    const res = await axios.get(`${base_URL}/likes/${LikerUserID}`);
+    const res = await axios.get(`${base_URL}/api/likes/${LikerUserID}`);
     console.log(res.data.data)
     return res.data.data
   }
@@ -74,7 +75,7 @@ export async function getSingleUserLike(LikerUserID){
 
 export async function getSingleUserReply(ReplierID){
   try { 
-    const res = await axios.get(`${base_URL}/replies/${ReplierID}`);
+    const res = await axios.get(`${base_URL}/api/replies/${ReplierID}`);
     console.log(res.data.data)
     return res.data.data
   }
