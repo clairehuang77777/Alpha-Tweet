@@ -154,7 +154,7 @@ app.get('/api/Feeds/:UserID', async (req, res) => {
   const { UserID } = req.params; // 提取 URL 中的 UserID
   try {
     const { rows: singleUserFeeds } = await pool.query(
-      'SELECT * FROM "Feeds" WHERE "UserID" = $1;', [UserID]
+      'SELECT * FROM "feeds" WHERE "UserID" = $1;', [UserID]
     );
     if (singleUserFeeds.length === 0) {
       return res.status(404).send({
