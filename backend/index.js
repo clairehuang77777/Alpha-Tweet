@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000 // 使用環境變數設置 API 埠
 
 import cors from 'cors';
 app.use(cors({
-  origin: 'https://clairehuang77777.github.io', // 允許 GitHub Pages 的域名
+  origin: process.env.FRONTEND_URL, // 允許 GitHub Pages 的域名
   methods: 'GET, POST', // 允許的方法
   credentials: false // 如果需要攜帶憑證
 }));

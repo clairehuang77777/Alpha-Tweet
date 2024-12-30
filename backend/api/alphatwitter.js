@@ -1,6 +1,6 @@
 const axios = window.axios;
 
-const base_URL = "https://alpha-tweet-backend.onrender.com";
+export const base_URL = import.meta.env.VITE_API_BASE_URL;
 //CRUD串接api設定
 console.log('Base URL:', base_URL);
 
