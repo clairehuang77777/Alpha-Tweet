@@ -1,65 +1,88 @@
 //建立server
 import express from 'express';
 // import mysql from 'mysql2/promise';
-import pkg from 'pg'
+import pkg from 'pg'; //匯入整個模組
+const { Pool } = pkg //解構出Pool
+// 導入dotenv 訪問.env
 import dotenv from 'dotenv'
+// 處理換域
+import cors from 'cors';
+
+//導入環境變數
 dotenv.config()
 
+//*-----如果在測試環境做以下連接---NODE_ENV=development--*//
+//依當下環境調整連線變數
+const getPoolConfig = () => {
+  if (process.env.NODE_ENV === 'production'){
+    return{
+    connectionString: process.env.DATABASE_URL,
+    ssl: { rejectUnauthorized: false }
+    //建立render postgreSQL連線
+    }
+  } else {
+    return {
+      user: process.env.PGUSER,
+      host: process.env.PGHOST,
+      database: process.env.PGDATABASE,
+      password: process.env.PGPASSWORD,
+      port: process.env.PGPORT
+      //建立local postgreSQL連線
+    }
+  } 
+}
 
-const { Pool } = pkg;
-const app = express()
-const port = process.env.PORT || 3000 // 使用環境變數設置 API 埠
-
-import cors from 'cors';
-app.use(cors({
-  origin: process.env.FRONTEND_URL, // 允許 GitHub Pages 的域名
-  methods: 'GET, POST', // 允許的方法
-  credentials: false // 如果需要攜帶憑證
-}));
-
-
-// 建立mySQL連線
-let resultsOfUsers = []
-let resultOfSingleUser = []
-// let resultOfUserFollowingFeeds = []
-let resultOfFeeds = []
-let resultOfSingleUserFeeds = []
-let resultOfSingleUserReply = []
-let resultOfSingleUserLike = []
-
-//儲存物件
-let requestUserID = ''
-let requestLikerID = ''
-let requestReplyID = ''
-
-// //建立simple query連線,
-// const connection = await mysql.createConnection({
-//   host: 'localhost', // 指向宿主機的 MySQL
-//   user: 'root',
-//   password: 'Jayesslee0604@',
-//   database: 'alphaTwitter',
-//   port: 3306, // 本地 MySQL 的埠
-// });
-
-//建立render postgreSQL連線
-const pool = new Pool({
-      connectionString: process.env.DATABASE_URL,
-      ssl: { rejectUnauthorized: false }, // 啟用 SSL 並忽略未授權的憑證,
-});
-console.log('Database URL', process.env.DATABASE_URL)
+//建立連線池
+const pool = new Pool(getPoolConfig())
 
 //測試連線
 pool.connect()
-    .then(client => {
-        console.log('Connected to PostgreSQL');
-        return client.release();
-    })
-    .catch(err => console.error('Connection error', err.stack));
+  .then(client => {
+    console.log("Connect to PGSQL")
+    console.log(`you are at${process.env.NODE_ENV}`)
+    client.release(); //釋放連線
+  })
+  .catch(err => console.log('Connection error',err.stack))
 
-//測試查詢
-pool.query('SELECT * FROM user LIMIT 1;')
-      .then(res => console.log(res.rows))
-      .catch(err => console.error(err.stack));
+
+//建立Express應用程式
+const app = express()
+const port = process.env.PORT || 3000 // 使用環境變數設置 API 埠
+
+//cors設定
+const allowCors = () => {
+  if (process.env.NODE_ENV === 'production') {
+    return {
+      origin: (origin, callback) => {
+        const allowedOrigins = [
+          'https://clairehuang77777.github.io/Alpha-Tweet', // 生產環境
+          'http://localhost:5173' // 本地開發環境
+        ];
+        if (!origin || allowedOrigins.includes(origin)) {
+          callback(null, true);
+        } else {
+          callback(new Error('Not allowed by CORS'));
+        }
+      },
+      methods: 'GET, POST',
+      credentials: true
+    };
+  } else {
+    return {
+      origin: 'http://localhost:5173', // 本地開發
+      methods: 'GET, POST',
+      credentials: true
+    };
+  }
+};
+
+app.use(cors(allowCors()));
+
+
+let resultsOfUsers = []
+// let resultOfUserFollowingFeeds = []
+let resultOfFeeds = []
+
 
 // 把結果返回到3000的response上
 // 製作api 'GET users'
@@ -69,7 +92,6 @@ app.get('/api/users', async(req, res) => {
       'SELECT * FROM "user";'
     )
     resultsOfUsers = users;
-    // console.log(resultsOfUsers); // results contains rows returned by server
     res.send({
       status:"success",
       message: "Data fetched successfully",
@@ -84,6 +106,7 @@ app.get('/api/users', async(req, res) => {
   }
 })
 
+//--------------------------------------------//
 // 製作api 'GET single users'
 app.get('/api/users/:UserID', async (req, res) => {
   const { UserID } = req.params; // 提取 URL 中的 UserID

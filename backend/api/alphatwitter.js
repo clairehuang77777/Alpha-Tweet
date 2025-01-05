@@ -1,8 +1,16 @@
 const axios = window.axios;
 
-export const base_URL = import.meta.env.VITE_API_BASE_URL;
-//CRUD串接api設定
+const base_URL = import.meta.env.MODE === 'production'? 
+import.meta.env.VITE_API_BASE_URL_RENDER :
+import.meta.env.VITE_API_BASE_URL_Local;
+
+console.log('Current NODE_ENV:', import.meta.env.MODE);
 console.log('Base URL:', base_URL);
+
+export { base_URL }
+
+// export const base_URL = import.meta.env.VITE_API_BASE_URL;
+//CRUD串接api設定
 
 export async function getAllUserData(){
   try { 
@@ -14,7 +22,6 @@ export async function getAllUserData(){
     console.error('[getAllUserData]:',error)
   }
 }
-
 
 export async function getAllFeeds(){
   try { 
