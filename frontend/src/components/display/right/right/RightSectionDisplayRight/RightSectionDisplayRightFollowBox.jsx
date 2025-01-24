@@ -17,7 +17,7 @@ export const RightSectionDisplayRightFollowBox = ({user, key}) => {
         <div className="followbox-left">
           <img className="followbox-photo "src={user.photoSrc}alt="userphoto"></img>
         </div>
-        <a href={`http://localhost:5173/Alpha-Tweet/user/${user.UserID}`}>
+        <a href={`https://clairehuang77777.github.io/Alpha-Tweet/user/${user.UserID}`}>
           <div className="followbox-center">
             <div className="followbox-center-name">{user.UserName}</div>
             <div className="followbox-center-id">{user.UserIDname}</div> 
