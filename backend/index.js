@@ -58,6 +58,7 @@ const allowCors = () => {
     return {
       origin: (origin, callback) => {
         const allowedOrigins = [
+          'https://clairehuang77777.github.io',
           'https://clairehuang77777.github.io/Alpha-Tweet', // 生產環境
           'http://localhost:5173' // 本地開發環境
         ];
@@ -69,13 +70,15 @@ const allowCors = () => {
           callback(new Error(`Not allowed by CORS,${origin}`));
         }
       },
-      methods: 'GET, POST,OPTIONS',
+      methods: 'GET, POST, PUT, DELETE, OPTIONS',
+      allowedHeaders: ['Content-Type', 'Authorization'],
       credentials: true
     };
   } else {
     return {
       origin: 'http://localhost:5173', // 本地開發
-      methods: 'GET, POST, OPTIONS',
+      methods: 'GET, POST, PUT, DELETE, OPTIONS',
+      allowedHeaders: ['Content-Type', 'Authorization'],
       credentials: true
     };
   }
@@ -83,6 +86,8 @@ const allowCors = () => {
 
 //建立middleware
 app.use(cors(allowCors())); //處理跨域
+console.log("CORS 設定:", corsOptions); // 記錄 CORS 設定，方便 debug
+app.use(cors(corsOptions)); // 載入 CORS 設定
 app.use(bodyParser.urlencoded({extended: true})) //處理req.body要爬下來
 app.use(express.json())//確保Express可以解析Json
 
