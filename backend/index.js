@@ -86,6 +86,7 @@ const allowCors = () => {
 
 //建立middleware
 app.use(cors(allowCors())); //處理跨域
+const corsOptions = allowCors()
 console.log("CORS 設定:", corsOptions); // 記錄 CORS 設定，方便 debug
 app.use(cors(corsOptions)); // 載入 CORS 設定
 app.use(bodyParser.urlencoded({extended: true})) //處理req.body要爬下來
