@@ -54,3 +54,5 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git remote set-url origin https://${{secrets.DEPLOY_SECRET}}@github.com/${{github.repository}}.git
           npx gh-pages -d dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
