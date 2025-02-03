@@ -61,19 +61,21 @@ const allowCors = () => {
           'https://clairehuang77777.github.io/Alpha-Tweet', // 生產環境
           'http://localhost:5173' // 本地開發環境
         ];
-        if (!origin || allowedOrigins.includes(origin)) {
+        console.log("CORS request from:", origin); // 記錄請求來源
+
+        if (!origin || allowedOrigins.includes(origin.replace(/\/$/, ""))) {
           callback(null, true);
         } else {
-          callback(new Error('Not allowed by CORS'));
+          callback(new Error(`Not allowed by CORS,${origin}`));
         }
       },
-      methods: 'GET, POST',
+      methods: 'GET, POST,OPTIONS',
       credentials: true
     };
   } else {
     return {
       origin: 'http://localhost:5173', // 本地開發
-      methods: 'GET, POST',
+      methods: 'GET, POST, OPTIONS',
       credentials: true
     };
   }
