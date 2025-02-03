@@ -98,7 +98,7 @@ export async function getSingleUserReply(ReplierID){
 export async function saveUserAccount(Account,UserName,Email,Password,DoubleCheckPassword){
   console.log(Account,UserName,Email,Password,DoubleCheckPassword )//嘗試能不能取得參數
     try {
-    const res = await axios.post('http://localhost:3000/api/register', {
+    const res = await axios.post(`${base_URL}/api/register`, {
        Account,
        UserName,
        Email,
@@ -118,7 +118,7 @@ export async function saveUserAccount(Account,UserName,Email,Password,DoubleChec
 //把帳號密碼傳給後面
 export async function UserLoginRequest(userTypeUserName, userTypePW){
   try{
-    const res = await axios.post('http://localhost:3000/api/login', {
+    const res = await axios.post(`${base_URL}/api/login`, {
       userTypeUserName,
       userTypePW
     })
@@ -133,7 +133,7 @@ export async function UserLoginRequest(userTypeUserName, userTypePW){
 //從username找到userID
 export async function getUserIDFromUserName(UserName){
   try {
-    const res = await axios.get(`http://localhost:3000/api/getUserID/${UserName}`)
+    const res = await axios.get(`${base_URL}/api/getUserID/${UserName}`)
     console.log(res)
     return res.data.UserID
   }
