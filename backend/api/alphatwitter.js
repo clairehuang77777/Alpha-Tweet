@@ -92,3 +92,52 @@ export async function getSingleUserReply(ReplierID){
     console.error('Error Details:', error.response?.data || error)
   }
 }
+
+
+//透過api發出請求而非透過<form> action, 才能接收response回應
+export async function saveUserAccount(Account,UserName,Email,Password,DoubleCheckPassword){
+  console.log(Account,UserName,Email,Password,DoubleCheckPassword )//嘗試能不能取得參數
+    try {
+    const res = await axios.post('http://localhost:3000/api/register', {
+       Account,
+       UserName,
+       Email,
+       Password,
+       DoubleCheckPassword
+    },{
+      header:{"Content-Type":"application/json"}
+    })
+      console.log(res)
+      return res
+    }
+    catch(erorr){
+      console.error('[saveUserAccount],',error)
+    } 
+}
+
+//把帳號密碼傳給後面
+export async function UserLoginRequest(userTypeUserName, userTypePW){
+  try{
+    const res = await axios.post('http://localhost:3000/api/login', {
+      userTypeUserName,
+      userTypePW
+    })
+    console.log(res)
+    return res
+  }
+  catch(error){
+    console.error(error)
+  }
+}
+
+//從username找到userID
+export async function getUserIDFromUserName(UserName){
+  try {
+    const res = await axios.get(`http://localhost:3000/api/getUserID/${UserName}`)
+    console.log(res)
+    return res.data.UserID
+  }
+  catch(error){
+    console.error(error)
+  }
+}

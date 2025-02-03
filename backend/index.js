@@ -7,6 +7,9 @@ const { Pool } = pkg //解構出Pool
 import dotenv from 'dotenv'
 // 處理換域
 import cors from 'cors';
+import bodyParser from 'body-parser';
+import { urlencoded } from 'express';
+import jwt from 'jsonwebtoken'
 
 //導入環境變數
 dotenv.config()
@@ -76,7 +79,11 @@ const allowCors = () => {
   }
 };
 
-app.use(cors(allowCors()));
+//建立middleware
+app.use(cors(allowCors())); //處理跨域
+app.use(bodyParser.urlencoded({extended: true})) //處理req.body要爬下來
+app.use(express.json())//確保Express可以解析Json
+
 
 
 let resultsOfUsers = []
@@ -200,7 +207,6 @@ app.get('/api/Feeds/:UserID', async (req, res) => {
   }
 });
 
-
 // 製作api 'GET User-Reply page'
 app.get('/api/replies/:ReplierID', async (req, res) => {
   const { ReplierID } = req.params; // 提取 URL 中的 ReplierID
@@ -257,6 +263,90 @@ app.get('/api/likes/:LikerUserID', async (req, res) => {
   }
 });
 
+app.post('/api/register', async (req ,res)=> {
+  const data = req.body
+  console.log(data)
+  const accountDB = data.Account 
+  const userNameDB = data.UserName 
+  const userEmailDB = data.Email 
+  const userPWDB = data.Password
+  const userDCPDB = data.DoubleCheckPassword
+  //檢查邏輯
+  
+  //把資料存進後端資料庫
+  try {
+    const result = await pool.query(`INSERT INTO "Account" ("Account", "UserName", "Email", "Password", "DoubleCheckPassword" )
+VALUES ($1, $2, $3, $4, $5)`,[accountDB, userNameDB, userEmailDB, userPWDB, userDCPDB]
+    )
+    console.log(result.rows);
+    
+    //成功後產生Json Web Token
+    const token = jwt.sign({Account: accountDB}, process.env.JWT_SECRET)
+    res.json({token})
+  }
+  catch(error){
+    console.error(error);
+    res.status(500).json({
+      status:"failed",
+      error:error.message
+    })
+  }
+})
+
+//接收用戶登入請求
+app.post("/api/login", async (req, res)=>{
+  console.log(req.body)
+  const data = req.body
+  console.log(data)
+  const userTypeUN = data.userTypeUserName
+  const userTypePW = data.userTypePW
+
+  try {
+    //檢查用戶輸入密碼正不正確
+    const resPW = await pool.query(
+      'SELECT "Password" FROM "Account" WHERE "Account" = $1;', [userTypeUN]
+    )
+    console.log(resPW)
+    const selectedPW = resPW.rows[0].Password
+    //檢查查詢是否為空
+    if (selectedPW.length === 0){
+      return res.status(401).json({data:"failed",message:"帳號不存在"})
+    }
+    
+    //檢查是否跟資料庫密碼一樣
+    if (selectedPW === userTypePW){
+      //一樣的話, 發放token給他 
+      const token = jwt.sign({Account: userTypeUN}, process.env.JWT_SECRET)
+      res.status(200).json({data:"passed", token:token})
+    } else {
+      return res.status(401).json({data:"failed",message:"密碼錯誤"})
+    }
+  }catch(error){
+    console.error(error)
+  }
+})
+
+//從userName反查userID並回傳
+app.get('/api/getUserID/:UserName', async (req, res) => {
+  const { UserName } = req.params; // 提取 URL 中的 
+  console.log(UserName)
+  // UserName
+  try {
+    const queryResultUserID = await pool.query(
+      'SELECT "UserID" FROM "user" WHERE "UserName" = $1;', [UserName]
+    );
+    //避免查詢結果為空
+    if(!queryResultUserID){
+      return res.status(401).json({message:"查詢不到東西"})
+    }
+    const resUserID = queryResultUserID.rows[0].UserID
+    console.log(resUserID)
+    res.json({UserID:resUserID})
+    
+  } catch (err) {
+    console.error('[Error in /api/getUserID/:UserName', err.message);
+  }
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
