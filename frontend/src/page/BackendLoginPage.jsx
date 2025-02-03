@@ -15,10 +15,10 @@ export const BackendLoginPage = () =>{
       <AClogo />
       <h1>後台登入</h1>
       <InputBoxConatiner>
-        <AuthInput />
+        <AuthInput displayName={"管理員名稱"} type={"text"} idName={"AdminUserName"} inputName={"AdminUserName"}/>
       </InputBoxConatiner>
       <InputBoxConatiner>
-        <AuthInput />
+        <AuthInput displayName={"管理員密碼"} type={"text"} idName={"AdminPassword"} inputName={"AdminPassword"}/>
       </InputBoxConatiner>
       <AuthButton>登入</AuthButton>
       <AuthLink onClick={handleFrontEndLoginClick}>前台登入</AuthLink>

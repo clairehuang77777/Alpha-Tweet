@@ -10,18 +10,7 @@ import { images } from "../../../../assets/images"
 export const RightSectionDisplayCenterUserSelf = () => {
   const location = useLocation()
 
-  // if (location.pathname === "/user/U01" ||
-  //   location.pathname === "/user/other/noti"){
-  //     EditBtnZoneProps = <EditBtnZoneEditUser/>
-  //   }
-
-  // else if (location.pathname === '/user/self'||
-  //   location.pathname === '/user/self/reply' ||
-  //   location.pathname === '/user/self/likes'
-  // ){
-  //   EditBtnZoneProps=<EditBtnZoneSubscript/>
-  // }
-
+ 
   // 提取 UserID（例如，路徑 "/user/:UserID"）
   const userId = location.pathname.split("/").pop(); // 提取路徑最後一部分作為 UserID
 
