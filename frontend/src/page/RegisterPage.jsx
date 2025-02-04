@@ -57,7 +57,7 @@ async function handleSignUpVerify(event){
     <Pagecontainer>
       <AClogo />
       <h1>建立你的帳號</h1>
-      <form action="http://localhost:3000/api/register" method="post">
+      <form onSubmit={(event)=>handleSignUpVerify(event)}>
       <InputBoxConatiner>
         <AuthInput displayName={"帳號"} type={"text"} idName={"Account"} inputName={"Account"} onChange={(event)=>setAccount(event.target.value)}/>
       </InputBoxConatiner>
