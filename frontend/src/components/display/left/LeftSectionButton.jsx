@@ -61,6 +61,7 @@ export const LeftSectionButton = (props) => {
       }
       else if(props.id===7){
         localStorage.removeItem("token")
+        localStorage.removeItem("userPhotoSrc")
         navigate("/login")
       }
       }}>

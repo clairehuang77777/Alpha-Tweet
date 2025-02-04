@@ -53,7 +53,7 @@ export const RightSectionDisplayRight = () => {
     <div className="right-section">
       <div className={clsx("right-section-container",{"popup":popUp})}>
         <div className="right-section-container-title">Popular</div>
-        {displayPopularUsers.map((user,index)=>(
+        {displayPopularUsers.slice(2).map((user,index)=>(
           <RightSectionDisplayRightFollowBox user={user} key={user.UserID || index} />))}
   </div>
 </div>
