@@ -153,7 +153,7 @@ app.get('/api/users/:UserID', async (req, res) => {
 app.get('/api/UserFollowingFeeds', async(req, res) => {
   try {
     const { rows: UserFollowingfeeds } = await pool.query(
-      'SELECT * FROM "UserFollowingFeeds";'
+      'SELECT * FROM "UserFollowingFeeds" ORDER BY "PostTime" DESC;'
     )
     // console.log(resultsOfUsers); // results contains rows returned by server
     res.send({
@@ -340,21 +340,50 @@ app.get('/api/getUserID/:UserName', async (req, res) => {
   console.log(UserName)
   // UserName
   try {
-    const queryResultUserID = await pool.query(
-      'SELECT "UserID" FROM "user" WHERE "UserName" = $1;', [UserName]
+    const queryResult = await pool.query(
+      'SELECT * FROM "user" WHERE "UserName" = $1;', [UserName]
     );
     //避免查詢結果為空
-    if(!queryResultUserID){
+    if(!queryResult){
       return res.status(401).json({message:"查詢不到東西"})
     }
-    const resUserID = queryResultUserID.rows[0].UserID
-    console.log(resUserID)
-    res.json({UserID:resUserID})
+    console.log(queryResult)
+    const resUserID = queryResult.rows[0].UserID
+    const resUserName = queryResult.rows[0].UserName
+    const resUserIDname = queryResult.rows[0].UserIDname
+    const resUserPhotoSrc = queryResult.rows[0].photoSrc
+    console.log(resUserID, resUserName,resUserIDname,resUserPhotoSrc)
+    res.json({UserID:resUserID, UserName:resUserName, UserIDname:resUserIDname,UserPhotoSrc:resUserPhotoSrc})
     
   } catch (err) {
     console.error('[Error in /api/getUserID/:UserName', err.message);
   }
 });
+
+
+app.post("/api/UserFollowingFeeds", async(req , res)=>{
+  const data = req.body
+  console.log(data)
+  const newUserID = data.UserID 
+  const newUserIDname = data.UserIDname 
+  const newUserName = data.UserName 
+  const newnewPost = data.newPost
+  const newcurrentTime = data.currentTime
+  const newphotoSrc = data.photoSrc
+
+  //把資料存進後端資料庫
+  try {
+    const result = await pool.query(`INSERT INTO "UserFollowingFeeds"(
+	"UserID", "UserFollowingID", "UserFollowingIDname", "UserFollowingUserName", "UserFollowingCountPostReply", "UserFollowingCountPostLike", "PostID", "PostContent", "PostTime", "photoSrc")
+	VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,[newUserID, newUserID, newUserIDname, newUserName, 0, 0, 0, newnewPost,newcurrentTime, newphotoSrc]
+    )
+    console.log(result) 
+    res.json("success")
+  }
+  catch(error){
+    console.error(error)
+  }
+})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
