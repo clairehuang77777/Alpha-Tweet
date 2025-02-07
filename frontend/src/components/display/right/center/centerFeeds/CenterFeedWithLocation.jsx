@@ -8,11 +8,13 @@ import { myFeedsContext } from "../../../../../myFeedsContext";
 import { myLikesContext } from "../../../../../myLikesContext";
 import { getSingleUserFeed, getSingleUserLike, getSingleUserReply } from "../../../../../../../backend/api/alphatwitter";
 
+
 export const CenterFeedWithLocation = () => {
   const { myFeeds, setMyFeeds } = useContext(myFeedsContext);
   const { myLikes, setMyLikes } = useContext(myLikesContext);
   const location = useLocation();
   const { UserID, LikerUserID, ReplierID } = useParams();
+
 
   // 本地状态来决定显示的内容
   const [display, setDisplay] = useState([]);

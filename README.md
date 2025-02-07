@@ -7,13 +7,22 @@
 
 ## Project Overview
 - Alpha Tweet is a social media platform that offers features like browsing feeds, personal pages, and more. <br/>
-- 🚀 The project is live! Access it now 🚀 <a href="https://clairehuang77777.github.io/Alpha-Tweet/">here</a>.
+- 🚀 The project is live! Access it now 🚀 <a href="https://clairehuang77777.github.io/Alpha-Tweet/login">here</a>.
 
 ## Features
 - Browse feeds and interact with posts.
 - View personal pages and follow other users.
 - Backend management for user and feed data.
-- Secure login and registration system.
+- User can login via test account.
+    ```    
+    // Test Account #1
+    Account: claire
+    Password: abc123
+    
+    // Test Account #2
+    Account: rose
+    Password: 123
+- Register a new account
 
 ## Build With
 - **Frontend**: React with Vite
@@ -35,8 +44,10 @@
 - Backend management (Browse All User List/Browse All Feeds ) <br/>
   ![UserList](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHVrbXB0cXEzaDAxeHFvZWQ3dm03bTVlZXkzbmx5dnd3c2EwaDdtNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ibwhBfhF50Sxuh5cGN/giphy.gif)
   ![FeedsList](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXd2b3Y2YTE2dzBncGRtZHBzNzRja25uYTB3NnF6Mzc0emI5ZTlvZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZDMPEXXHDw1TG72d8A/giphy.gif)
-- Login/ Register <br/>
-  ![Register](https://i.ibb.co/1rDYqxd/2024-12-17-11-58-13.png)
+- Login <br/>
+- ex1. User account rose login<br/> ![roseLogin](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTJrMGxwN3kzanoxZGxqcmZha25hOHdyc2FyajV5dTUwM2U0M3AwaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lywMDQR64dK3CjOoBz/giphy.gif)
+- ex2. User accoun claire login<br/> ![claireLogin](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcGQyN25scDdrMXNtOGJqaDdhYjl4eXI3eWU5NnFvOHUwdXJ3ZW5rNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jU6tftk5E7qZ2PmNtl/giphy.gif)
+  
 - Post/ Follow others/ being followed
 
 
