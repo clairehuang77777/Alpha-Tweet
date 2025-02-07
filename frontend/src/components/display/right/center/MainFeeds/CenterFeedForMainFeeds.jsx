@@ -2,9 +2,11 @@ import { CenterFeed } from "../centerFeeds/CenterFeed"
 import { getUserFollowingFeeds } from "../../../../../../../backend/api/alphatwitter"
 import { useEffect, useContext } from "react"
 import { feedsIFollowContext } from "../../../../../feedsIFollowContext"
+import { feedIsUpdateContext } from "../../../../../feedIsUpdateContext"
 
 export const CenterFeedForMainFeed = ({ RightCenterReplyArea, RightCenterButtonArea }) => {
 const {feedsIFollow, setFeedsIFollow} = useContext(feedsIFollowContext)
+const {feedIsUpdate, setFeedIsUpdate} = useContext(feedIsUpdateContext)
   
   //設定預設值
   const defaultfeedsIFollow = {
@@ -28,6 +30,7 @@ const {feedsIFollow, setFeedsIFollow} = useContext(feedsIFollowContext)
       console.log("資料類型:", Array.isArray(userFollowingFeeds)); // 確認是否為陣列
       console.log(userFollowingFeeds)
       setFeedsIFollow(userFollowingFeeds || [])
+      setFeedIsUpdate(false)
     }
     catch(error){
       console.error(error)
@@ -38,7 +41,7 @@ const {feedsIFollow, setFeedsIFollow} = useContext(feedsIFollowContext)
   return()=> {
     isMounted = false ///防止組建卸載後更新
   }
-  },[setFeedsIFollow])
+  },[setFeedsIFollow, feedIsUpdate])
   
 
 const displayFeedsIFollow = Array.isArray(feedsIFollow) && feedsIFollow.length > 0 

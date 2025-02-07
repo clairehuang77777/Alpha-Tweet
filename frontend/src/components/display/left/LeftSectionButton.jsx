@@ -22,11 +22,20 @@ export const LeftSectionButton = (props) => {
         //從decoded_Token中取出Account
         const selectedAccount = decoded_Token.Account
 
-        const returnUserID = await getUserIDFromUserName(selectedAccount)
-        console.log(returnUserID)
+        const resData = await getUserIDFromUserName(selectedAccount)
+        console.log(resData)
+        //取出資料
+        const getID = resData.UserID
+        const getUserName = resData.UserName
+        const getUserIDname = resData.UserIDname
+        const getUserPhotoSrc = resData.UserPhotoSrc
         //把UserID存到localstorage
-        localStorage.setItem("UserID",returnUserID)
-        setUserID(returnUserID)
+        localStorage.setItem("UserID",getID)
+        localStorage.setItem("UserName",getUserName)
+        localStorage.setItem("UserIDname",getUserIDname)
+        localStorage.setItem("PhotoSrc",getUserPhotoSrc)
+        //存入state
+        setUserID(getID)
         console.log(userID)
     }
     catch(error){

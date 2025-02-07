@@ -10,6 +10,7 @@ import { myIntroDataContext } from './myIntroDataContext'
 import { myFeedsContext } from './myFeedsContext'
 import { myLikesContext } from './myLikesContext'
 import { userIDContext } from './userIDContext'
+import {feedIsUpdateContext} from './feedIsUpdateContext'
 
 function App() {
   const [popUp, setPopUp] = useState(false)
@@ -21,6 +22,7 @@ function App() {
   const [myFeeds, setMyFeeds] = useState([])
   const [myLikes, setMyLikes] = useState([])
   const [userID, setUserID] = useState([])
+  const [feedIsUpdate, setFeedIsUpdate] = useState(false)
 
 
   const basename = import.meta.env.VITE_BASE_URL
@@ -35,6 +37,7 @@ function App() {
       <myFeedsContext.Provider value={{myFeeds, setMyFeeds}}>
       <myLikesContext.Provider value={{myLikes, setMyLikes}}>
       <userIDContext.Provider value={{userID,setUserID}}>
+      <feedIsUpdateContext.Provider value={{feedIsUpdate, setFeedIsUpdate}}>
         <Routes>
           <Route path='/' element={<MainPage />}/>
           <Route path='/main/tweet' element={<MainPage />}/>
@@ -50,6 +53,7 @@ function App() {
           <Route path='/admin_main' element={<AdminMainPage /> }/>
           <Route path='/admin_user' element={<AdminMainUserPage /> }/>
         </Routes>
+      </feedIsUpdateContext.Provider>
       </userIDContext.Provider>
       </myLikesContext.Provider>
       </myFeedsContext.Provider>
