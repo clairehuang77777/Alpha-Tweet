@@ -45,6 +45,7 @@ export async function getUserFollowingFeeds(){
   }
 }
 
+
 export async function getSingleUserFeed(UserID){
   console.log('[getSingleUserFeed] UserID:', UserID); // 調試
   try { 
@@ -135,7 +136,26 @@ export async function getUserIDFromUserName(UserName){
   try {
     const res = await axios.get(`${base_URL}/api/getUserID/${UserName}`)
     console.log(res)
-    return res.data.UserID
+    return res.data
+  }
+  catch(error){
+    console.error(error)
+  }
+}
+
+
+export async function postUserFollowingFeeds(UserID,UserIDname, UserName, newPost ,currentTime,photoSrc){
+  try {
+    const res = await axios.post(`${base_URL}/api/UserFollowingFeeds`,{
+      UserID,
+      UserIDname,
+      UserName,
+      newPost,
+      currentTime,
+      photoSrc
+    })
+    console.log(res)
+    return res
   }
   catch(error){
     console.error(error)
