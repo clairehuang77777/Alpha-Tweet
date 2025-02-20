@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { myIntroDataContext } from "../../../../../myIntroDataContext"
 import { useParams } from "react-router-dom"
 import { getSingleUserData } from "../../../../../../../backend/api/alphatwitter"
@@ -9,6 +9,10 @@ const {UserID} = useParams()
 const {LikerUserID} = useParams()
 const {ReplierID} = useParams()
 const apiUseID = UserID || LikerUserID || ReplierID
+//處理lazyloading-header
+const [isloaded, setIsloaded] = useState(false)
+//處理lazyloading-introPic
+const [isloadedIntroPic, setIsloadedIntroPic] = useState(false)
 
 const defaultMyIntro = {
   UserID: "U01",
@@ -57,10 +61,13 @@ console.log(disPlayMyInfo.photoSrc)
   return (
     <div className="Intro">
       <div className="Intro-header-piczone">
-        <img className="intro-header-pic" src={disPlayMyInfo.photoBackgroundSrc} alt="intro-header-photo"></img>
+        <img className="intro-header-pic" src={disPlayMyInfo.photoBackgroundSrc} alt="intro-header-photo" onLoad={()=>setIsloaded(true)}></img>
+        {!isloaded && (
+          <div className="placeholder-lazyloading-header"></div>)}
       </div>
       <div className="Intro-user-pic-zone">
-        <img className="Intro-user-pic" src={disPlayMyInfo.photoSrc} alt="Intro-user-pic"></img>
+        <img className="Intro-user-pic" src={disPlayMyInfo.photoSrc} alt="Intro-user-pic" onLoad={()=>setIsloadedIntroPic(true)}></img>
+        {!isloadedIntroPic && (<div className="placeholder-lazyloading-introPic"></div>)}
       </div>
       <div className="Intro-user-edit-btn-zone">
         {editBtnZone}
