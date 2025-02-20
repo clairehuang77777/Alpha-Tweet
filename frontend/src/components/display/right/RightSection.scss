@@ -44,16 +44,41 @@
   }
 }
 
+.toLeftMainTitle{
+  margin-left: -50px;
+}
+
 .middle-header-leftarea {
   display: flex;
   align-items: center;
-  padding-left: 3px;
+  padding-left: 10px;
+  width: 40px;
 }
 
 .middle-header-leftarea-img{
-  width: 15px;
-  height: 15px;
+  width: 25px;
+  height: 25px;
+  position: absolute;
 }
+
+//hover effect
+.hover-circle-header{
+  width: 40px;
+    height: 40px;
+    background-color: lightgray;
+    opacity: 0;
+    border-radius: 50px;
+    position: relative;
+    left: -7px;
+    display: none;
+    transition: opacity 0.3s;
+}
+
+.middle-header-leftarea-img:hover ~ .hover-circle-header{
+  display: block;
+  opacity: 0.4;
+}
+
 
 .middle-header-rightarea {
   display: flex;
