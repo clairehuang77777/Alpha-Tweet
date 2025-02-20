@@ -54,18 +54,21 @@ export const CenterTabBar = () => {
           <button className={clsx("center-tab-bar-text-post",{"clicked":tabId===1})}>
             推文
           </button>
+          <div className="tab-hover1"></div>
       </div>
       <div className={clsx("center-tab-bar-center-tweet",{"clicked":tabId===2})}
         onClick={() => {handleTabClick(2, `/user/reply/${GETReplierFromUserID}`)}}>
         <button className={clsx("center-tab-bar-text-tweet",{"clicked":tabId===2})}>
           推文與回覆
           </button>
+          <div className="tab-hover2"></div>
       </div>
       <div className={clsx("center-tab-bar-center-likes",{"clicked":tabId===3})}
       onClick={() => {handleTabClick(3, `/user/likes/${GETLikerUserFromUserID || GETLikerUserFromReplyID}`);}}>
         <button className={clsx("center-tab-bar-text-likes",{"clicked":tabId===3})}>
           喜歡的內容
         </button>
+        <div className="tab-hover3"></div>
       </div>
 </div>
   )
