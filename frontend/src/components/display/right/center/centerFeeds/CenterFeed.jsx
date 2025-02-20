@@ -7,6 +7,7 @@ export const CenterFeed = ({ item, RightCenterReplyArea, RightCenterButtonArea})
       <div className="feeds">
         <div className="feeds-LeftArea">
           <img className="feeds-user-photo" src={item.photoSrc || item.PostUserSrc} alt="user=photo"></img>
+          <div className="placeholder-lazyloading-feedsUserPhoto"></div>
         </div>
         <div className="feeds-RightArea">
           <div className="feeds-RightTopArea">
