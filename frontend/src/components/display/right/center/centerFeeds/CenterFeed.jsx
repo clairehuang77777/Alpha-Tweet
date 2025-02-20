@@ -3,6 +3,23 @@ import { useState } from "react"
 
 export const CenterFeed = ({ item, RightCenterReplyArea, RightCenterButtonArea}) => {
   const [isLoadingUserPhoto, setIsLoadingUserPhoto] = useState(false)
+  let formattedTimeReply =''
+  let formattedTimeUser =''
+
+// 處理日期格式
+if (location.pathname.startsWith("/user/reply")) {
+    const postTime = item.ReplierTime;
+    if (postTime) { // 確認 postTime 存在且有效
+        formattedTimeReply = new Date(postTime).toISOString().replace('T', ' ').slice(0, 16);
+    }
+} 
+else if (location.pathname.startsWith("/")) {
+    const postTime = item.PostTime;
+    if (postTime) { // 同樣做有效性檢查
+        formattedTimeUser = new Date(postTime).toISOString().replace('T', ' ').slice(0, 16);
+    }
+}
+
 
   return (
   
@@ -15,7 +32,7 @@ export const CenterFeed = ({ item, RightCenterReplyArea, RightCenterButtonArea})
           <div className="feeds-RightTopArea">
             <div className="feeds-poster-name">{item.UserFollowingUserName || item.UserName ||item.PostUserName}</div>
             <div className="feeds-poster-id">{item.UserFollowingIDname || item.UserIDname}</div>
-            <div className="feeds-poster-time">∙ {item.PostTime || item.ReplierTime}</div>
+            <div className="feeds-poster-time">∙ {formattedTimeUser || formattedTimeReply || item.ReplierTime}</div>
           </div>
           <div className="feeds-RightCenterReplyArea">{RightCenterReplyArea}</div>
           <div className="feeds-RightCenterArea">
