@@ -13,6 +13,8 @@ export const CenterPost = () => {
   const [newPost, setNewPost] = useState("")
   const {feedIsUpdate, setFeedIsUpdate} = useContext(feedIsUpdateContext)
   const [isFocused, setIsFocused] = useState(false); // 追蹤是否點擊 textarea
+  //lazyloading
+  const [isLoadingPhoto, setIsLoadingPhoto] = useState(false)
 
   async function handleTweetBtn(){
     // setPopUp(true)
@@ -76,7 +78,8 @@ export const CenterPost = () => {
     <>
     <div className="post">
       <div className="post-LeftArea">
-        <img className="post-user-photo" src={photoSrc} alt="feeds-photo"></img>
+        <img className="post-user-photo" src={photoSrc} alt="feeds-photo" onLoad={()=>{setIsLoadingPhoto(true)}}></img>
+        {!isLoadingPhoto && (<div className="placeholder-lazyloading-UserPhoto"></div>)}
       </div>
       <div className={clsx("post-RightArea",{"popup":popup})}>
         <textarea className="post-RightTopArea" onChange={(event)=>setNewPost(event.target.value)} value={newPost} placeholder={isFocused? "": "有什麼新鮮事?"} onFocus={() => setIsFocused(true)}>

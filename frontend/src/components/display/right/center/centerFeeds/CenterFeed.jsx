@@ -1,13 +1,15 @@
 import { ButtonArea } from "./FeedsCenterArea/ButtonArea"
+import { useState } from "react"
 
 export const CenterFeed = ({ item, RightCenterReplyArea, RightCenterButtonArea}) => {
+  const [isLoadingUserPhoto, setIsLoadingUserPhoto] = useState(false)
 
   return (
   
       <div className="feeds">
         <div className="feeds-LeftArea">
-          <img className="feeds-user-photo" src={item.photoSrc || item.PostUserSrc} alt="user=photo"></img>
-          <div className="placeholder-lazyloading-feedsUserPhoto"></div>
+          <img className="feeds-user-photo" src={item.photoSrc || item.PostUserSrc} alt="user=photo" onLoad={()=>{setIsLoadingUserPhoto(true)}}></img>
+          {!isLoadingUserPhoto && (<div className="placeholder-lazyloading-feedsUserPhoto"></div>)}
         </div>
         <div className="feeds-RightArea">
           <div className="feeds-RightTopArea">

@@ -6,6 +6,7 @@ import { images } from "../../../../../assets/images"
 
 export const RightSectionDisplayRightFollowBox = ({user, key}) => {
   const [followBoxCheck, setFollowBoxCheck] = useState(false)
+  const [isLoadingFollowBoxPhoto, setIsLoadingFollowBoxPhoto] = useState(false)
 
   function handleFollowClick(){
     setFollowBoxCheck(!followBoxCheck)
@@ -15,7 +16,8 @@ export const RightSectionDisplayRightFollowBox = ({user, key}) => {
     <>
       <div key= {key} className="right-section-container-followbox">
         <div className="followbox-left">
-          <img className="followbox-photo "src={user.photoSrc}alt="userphoto"></img>
+          <img className="followbox-photo" src={user.photoSrc} alt="userphoto" onLoad={()=>{setIsLoadingFollowBoxPhoto(true)}}></img>
+          {!isLoadingFollowBoxPhoto && <div className="placeholder-lazyloading-followboxUserPhoto"></div>}
         </div>
         <a href={`https://clairehuang77777.github.io/Alpha-Tweet/user/${user.UserID}`}>
           <div className="followbox-center">

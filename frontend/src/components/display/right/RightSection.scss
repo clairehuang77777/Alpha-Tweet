@@ -91,6 +91,7 @@
 
 .feeds-LeftArea {
   width: 40px;
+  position: relative;
 }
 
 .feeds-RightArea {
@@ -171,6 +172,19 @@
   object-fit: cover;
 }
 
+.placeholder-lazyloading-feedsUserPhoto{
+    width: 30px;
+    height: 30px;
+    border-radius: 45px;
+    padding: 3px;
+    position: absolute;
+    top: 0px;
+    background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    transition: opacity 1.5s ease;
+}
+
 /*Right Section -- Center*/
 /*Post*/
 
@@ -185,6 +199,7 @@
 
 .post-LeftArea {
   width: 40px;
+  position: relative;
 }
 
 .post-user-photo {
@@ -282,6 +297,10 @@
 .followbox-center-name{
   color: black;
 }
+
+.followbox-left{
+  position: relative;
+}
 .followbox-photo {
   width: 40px;
   height: 40px;
@@ -289,6 +308,19 @@
   padding-left: 5px;
   padding-top: 3px;
   object-fit: cover;
+}
+
+.placeholder-lazyloading-followboxUserPhoto{
+    width: 40px;
+    height: 40px;
+    border-radius: 45px;
+    position: absolute;
+    top: 3px;
+    left: 5px;
+    background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    transition: opacity 1.5s ease;
 }
 
 .followbox-center {
@@ -358,6 +390,17 @@
   height: 30px;
 }
 
+.placeholder-lazyloading-UserPhoto{
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  transition: opacity 1.5s ease;    border-radius: 45px;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+}
 .feeds-poster-name {
   font-weight: bold;
   font-size: 0.9rem;
