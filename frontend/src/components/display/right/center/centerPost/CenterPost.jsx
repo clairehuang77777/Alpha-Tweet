@@ -78,7 +78,7 @@ export const CenterPost = () => {
     <>
     <div className="post">
       <div className="post-LeftArea">
-        <img className="post-user-photo" src={photoSrc} alt="feeds-photo" onLoad={()=>{setIsLoadingPhoto(true)}}></img>
+        <img className="post-user-photo" src={photoSrc} alt="" onLoad={()=>{setIsLoadingPhoto(true)}}></img>
         {!isLoadingPhoto && (<div className="placeholder-lazyloading-UserPhoto"></div>)}
       </div>
       <div className={clsx("post-RightArea",{"popup":popup})}>

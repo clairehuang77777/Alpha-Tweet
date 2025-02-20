@@ -61,12 +61,12 @@ console.log(disPlayMyInfo.photoSrc)
   return (
     <div className="Intro">
       <div className="Intro-header-piczone">
-        <img className="intro-header-pic" src={disPlayMyInfo.photoBackgroundSrc} alt="intro-header-photo" onLoad={()=>setIsloaded(true)}></img>
+        <img className="intro-header-pic" src={disPlayMyInfo.photoBackgroundSrc} alt="" onLoad={()=>setIsloaded(true)}></img>
         {!isloaded && (
           <div className="placeholder-lazyloading-header"></div>)}
       </div>
       <div className="Intro-user-pic-zone">
-        <img className="Intro-user-pic" src={disPlayMyInfo.photoSrc} alt="Intro-user-pic" onLoad={()=>setIsloadedIntroPic(true)}></img>
+        <img className="Intro-user-pic" src={disPlayMyInfo.photoSrc} alt="" onLoad={()=>setIsloadedIntroPic(true)}></img>
         {!isloadedIntroPic && (<div className="placeholder-lazyloading-introPic"></div>)}
       </div>
       <div className="Intro-user-edit-btn-zone">
