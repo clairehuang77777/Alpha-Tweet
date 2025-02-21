@@ -73,7 +73,7 @@ console.log(disPlayMyInfo.photoSrc)
         {editBtnZone}
       </div>
       <div className="Intro-usernameid">
-        <div className="Intro-username">{disPlayMyInfo.username}</div>
+        <div className="Intro-username">{disPlayMyInfo.UserName}</div>
         <div className="Intro-id">{disPlayMyInfo.UserIDname}</div>
       </div>
       <div className="Intro-user-introduction">
