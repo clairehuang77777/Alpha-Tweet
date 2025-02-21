@@ -1,25 +1,18 @@
 import { CenterFeed } from "../centerFeeds/CenterFeed"
 import { getUserFollowingFeeds } from "../../../../../../../backend/api/alphatwitter"
-import { useEffect, useContext } from "react"
+import { useEffect, useContext, useState } from "react"
 import { feedsIFollowContext } from "../../../../../feedsIFollowContext"
 import { feedIsUpdateContext } from "../../../../../feedIsUpdateContext"
+import { FeedSkelton } from "../centerFeeds/FeedSkelton"
+import "react-loading-skeleton"
+
 
 export const CenterFeedForMainFeed = ({ RightCenterReplyArea, RightCenterButtonArea }) => {
 const {feedsIFollow, setFeedsIFollow} = useContext(feedsIFollowContext)
 const {feedIsUpdate, setFeedIsUpdate} = useContext(feedIsUpdateContext)
-  
-  //設定預設值
-  const defaultfeedsIFollow = {
-    "UserID": "U01",
-    "UserFollowingID": "U02",
-    "UserFollowingIDname": "@RosienRose",
-    "UserFollowingUserName": "Rose",
-    "UserFollowingCountPostReply": 3,
-    "UserFollowingCountPostLike": 3,
-    "PostID": "P08",
-    "PostContent": "Meet me at APT!",
-    "PostTime": "2024-12-18T17:46:51.000Z"
-  }
+//使用reactloading
+const [isLoading, setIsLoading]=useState(true)
+
 
   useEffect(()=> {
   let isMounted = true;
@@ -29,11 +22,16 @@ const {feedIsUpdate, setFeedIsUpdate} = useContext(feedIsUpdateContext)
       const userFollowingFeeds = await getUserFollowingFeeds()
       console.log("資料類型:", Array.isArray(userFollowingFeeds)); // 確認是否為陣列
       console.log(userFollowingFeeds)
-      setFeedsIFollow(userFollowingFeeds || [])
+      if (isMounted) {
+        setFeedsIFollow(userFollowingFeeds || [])
+        setIsLoading(false)
+      }
       setFeedIsUpdate(false)
+
     }
     catch(error){
       console.error(error)
+      setIsLoading(false)  // 如果出現錯誤，也要設為 false
     }
   }
   fetchUserFollowingFeeds()
@@ -44,19 +42,23 @@ const {feedIsUpdate, setFeedIsUpdate} = useContext(feedIsUpdateContext)
   },[setFeedsIFollow, feedIsUpdate])
   
 
-const displayFeedsIFollow = Array.isArray(feedsIFollow) && feedsIFollow.length > 0 
-    ? feedsIFollow 
-    : [defaultfeedsIFollow];
+// const displayFeedsIFollow = Array.isArray(feedsIFollow) && feedsIFollow.length > 0 
+//     ? feedsIFollow 
+//     : [defaultfeedsIFollow];
 
   return (
     <>
-    {displayFeedsIFollow.map((item,index)=>(
+  {isLoading ? (
+      <FeedSkelton count={10}/>
+    ) : (
+      feedsIFollow.map((item,index)=>(
          <CenterFeed 
          key={index}
          item={item}
          RightCenterReplyArea={RightCenterReplyArea} 
         RightCenterButtonArea={RightCenterButtonArea}/>     
-    ))}
+      ))
+    )}
     </>
   )
 }

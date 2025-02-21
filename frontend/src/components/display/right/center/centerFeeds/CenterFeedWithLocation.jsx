@@ -7,7 +7,7 @@ import { ButtonAreaWithRedHeart } from "./FeedsCenterArea/ButtonAreaWithRedHeart
 import { myFeedsContext } from "../../../../../myFeedsContext";
 import { myLikesContext } from "../../../../../myLikesContext";
 import { getSingleUserFeed, getSingleUserLike, getSingleUserReply } from "../../../../../../../backend/api/alphatwitter";
-
+import { FeedSkelton } from "./FeedSkelton";
 
 export const CenterFeedWithLocation = () => {
   const { myFeeds, setMyFeeds } = useContext(myFeedsContext);
@@ -15,11 +15,13 @@ export const CenterFeedWithLocation = () => {
   const location = useLocation();
   const { UserID, LikerUserID, ReplierID } = useParams();
 
-
   // 本地状态来决定显示的内容
   const [display, setDisplay] = useState([]);
   const [RightCenterReplyContent, setRightCenterReplyContent] = useState(null);
   const [RightCenterButtonContent, setRightCenterButtonContent] = useState(null);
+  //feedSkeleton
+  const [isLoading, setIsLoading]=useState(true)
+
 
   // 默认数据
   const defaultMyFeeds = [
@@ -77,14 +79,18 @@ export const CenterFeedWithLocation = () => {
             setDisplay(myLikesData || defaultMyLikes);
             setRightCenterButtonContent(<ButtonAreaWithRedHeart />);
             setRightCenterReplyContent(null);
+            setIsLoading(false)
           }
         } else if (location.pathname.startsWith("/user/reply")) {
           // 处理 Reply 数据
           const myReplydata = await getSingleUserReply(ReplierID)
-          setDisplay(myReplydata || defaultMyReplies)
-          setRightCenterButtonContent(null);
-          setRightCenterReplyContent(<ReplyArea displayReplyeeName={(
-            myReplyData && myReplyData.length > 0 ? myReplyData[0].UserName : defaultMyReplies[0].UserName) || "Unknown"}/>)
+          if (isMounted) {
+            setDisplay(myReplydata || defaultMyReplies)
+            setRightCenterButtonContent(null);
+            setRightCenterReplyContent(<ReplyArea displayReplyeeName={(
+              myReplydata && myReplydata.length > 0 ? myReplydata[0].UserName : defaultMyReplies[0].UserName) || "Unknown"}/>)
+            setIsLoading(false)
+            }
           }
          else if (location.pathname.startsWith("/user"))
           {
@@ -92,8 +98,10 @@ export const CenterFeedWithLocation = () => {
           const myFeedsData = await getSingleUserFeed(UserID);
           if (isMounted) {
             setDisplay(myFeedsData || defaultMyFeeds);
+            console.log(display)
             setRightCenterButtonContent(<ButtonArea />);
             setRightCenterReplyContent(null);
+            setIsLoading(false)
             }
           }
       }
@@ -111,15 +119,20 @@ export const CenterFeedWithLocation = () => {
 
   return (
     <>
-      {(Array.isArray(display) ? display : []).map((item, index) => (
-        <CenterFeed
-          key={index}
-          RightCenterReplyArea={RightCenterReplyContent}
-          RightCenterButtonArea={RightCenterButtonContent}
-          item={item}
-
-        />
-      ))}
+    {isLoading ? (
+      <FeedSkelton count={10}/>
+    ) : (
+      (Array.isArray(display) ? display : []).map((item, index) => {
+        return (
+          <CenterFeed
+            key={index}
+            RightCenterReplyArea={RightCenterReplyContent}
+            RightCenterButtonArea={RightCenterButtonContent}
+            item={item}
+          />
+        )
+      })
+  )}
     </>
   );
 };

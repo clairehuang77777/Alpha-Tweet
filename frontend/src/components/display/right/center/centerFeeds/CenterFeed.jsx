@@ -5,6 +5,7 @@ export const CenterFeed = ({ item, RightCenterReplyArea, RightCenterButtonArea})
   const [isLoadingUserPhoto, setIsLoadingUserPhoto] = useState(false)
   let formattedTimeReply =''
   let formattedTimeUser =''
+  console.log(item)
 
 // 處理日期格式
 if (location.pathname.startsWith("/user/reply")) {
@@ -22,10 +23,9 @@ else if (location.pathname.startsWith("/")) {
 
 
   return (
-  
       <div className="feeds">
         <div className="feeds-LeftArea">
-          <img className="feeds-user-photo" src={item.photoSrc || item.PostUserSrc} alt="user=photo" onLoad={()=>{setIsLoadingUserPhoto(true)}}></img>
+          <img className="feeds-user-photo" src={item.photoSrc || item.PostUserSrc} alt="" onLoad={()=>{setIsLoadingUserPhoto(true)}}></img>
           {!isLoadingUserPhoto && (<div className="placeholder-lazyloading-feedsUserPhoto"></div>)}
         </div>
         <div className="feeds-RightArea">

@@ -11,6 +11,7 @@ import { myFeedsContext } from './myFeedsContext'
 import { myLikesContext } from './myLikesContext'
 import { userIDContext } from './userIDContext'
 import {feedIsUpdateContext} from './feedIsUpdateContext'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 function App() {
   const [popUp, setPopUp] = useState(false)
@@ -28,6 +29,7 @@ function App() {
   const basename = import.meta.env.VITE_BASE_URL
 
   return (
+  <SkeletonTheme baseColor="#e0e0e0" highlightColor="#f0f0f0">
     <BrowserRouter basename={basename}>
       <popUpContext.Provider value={{popUp, setPopUp, editMode, setEditMode}}>
       <userContext.Provider value={{users, setUsers}}>
@@ -63,6 +65,7 @@ function App() {
       </userContext.Provider>
       </popUpContext.Provider>
     </BrowserRouter>
+  </SkeletonTheme>
   )
 }
 
