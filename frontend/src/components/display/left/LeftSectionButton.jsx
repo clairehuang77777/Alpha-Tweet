@@ -10,7 +10,10 @@ export const LeftSectionButton = (props) => {
   const [isClick, setIsClick] = useState(false)
   const navigate = useNavigate()
   const {userID,setUserID} = useContext(userIDContext)
-
+  //所在頁面為粗體
+  const [profileBold, setProfileBold] = useState(false)
+  const [mainBold, setMainBold] = useState(false)
+  
   //用useEffect封裝這個非同步函數, 不能夠寫在react元件上
   useEffect(()=> {
     const fetchUserID = async () => {
@@ -64,9 +67,11 @@ export const LeftSectionButton = (props) => {
       }
       else if(props.id===4){
         navigate("/")
+        setMainBold(true)
       }
       else if(props.id===5){
         navigate(`/user/${userID}`)
+        setProfileBold(true)
       }
       else if(props.id===7){
         localStorage.removeItem("token")
@@ -75,7 +80,7 @@ export const LeftSectionButton = (props) => {
       }
       }}>
       <img className="left-section-button-icon" src={isClick? props.srcClick : props.src}></img>
-      <span className="left-section-button-text">{props.title}</span>  
+      <span className={clsx("left-section-button-text", { bold: profileBold || mainBold })}>{props.title}</span>  
       <div className={`left-section-button-hover num-${props.id}`}></div>    
     </div>
   )
