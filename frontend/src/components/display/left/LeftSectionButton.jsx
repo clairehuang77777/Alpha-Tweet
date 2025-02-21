@@ -75,7 +75,8 @@ export const LeftSectionButton = (props) => {
       }
       }}>
       <img className="left-section-button-icon" src={isClick? props.srcClick : props.src}></img>
-      <span className="left-section-button-text">{props.title}</span>      
+      <span className="left-section-button-text">{props.title}</span>  
+      <div className={`left-section-button-hover num-${props.id}`}></div>    
     </div>
   )
 } 
