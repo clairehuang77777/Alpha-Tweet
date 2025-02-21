@@ -14,7 +14,7 @@ export const InputBoxConatiner =styled.div`
 
 export const AuthButton = styled.button`
   margin-top: 20px;
-  width: 250px;
+  width: 280px;
   border-radius: 25px;
   border-width: 0px;
   background-color: #ff6600;
