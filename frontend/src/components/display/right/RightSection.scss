@@ -111,7 +111,7 @@
   flex-direction: row;
   border: 0.5px solid lightgrey;
   padding-top: 5px;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 }
 
 .feeds-LeftArea {
@@ -191,16 +191,16 @@
 }
 
 .feeds-user-photo, .post-user-photo {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 45px;
   padding: 3px;
   object-fit: cover;
 }
 
 .placeholder-lazyloading-feedsUserPhoto{
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 45px;
     padding: 3px;
     position: absolute;
@@ -216,7 +216,7 @@
 
 .post {
   width: 600px;
-  height: 100px;
+  height: 150px;
   display: flex;
   flex-direction: row;
   border: 0.5px solid lightgrey;
@@ -227,53 +227,65 @@
   width: 40px;
   position: relative;
   padding-left: 15px;
+  padding-top: 10px;
 }
 
 .post-user-photo {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
 }
 
 .post-RightArea {
   width: 550px;
   display: flex;
   flex-direction: column;
+  padding-left: 10px;
   &.popup {
       background-color: transparent;
     }
 }
 
 .post-RightTopArea{
-  color: grey;
+  color: black;
   height: 80px;
   padding-top: 10px;
   font-size: 0.9rem;
   display: flex;
   justify-content: flex-start;
-  border:0px solid
+  border:0px solid;
+  outline:none;
+  padding-left: 5px;
+  padding-right: 10px;
 }
 
 .post-RightButtonArea {
   display: flex;
   justify-content: flex-end;
-  margin-top: 3px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 
 }
 
 .post-button {
-  margin-right: 10px;
+  margin-right: 20px;
   border-radius: 40px;
   background-color: orangered;
   color: white;
   border: 0px;
   padding: 5px 10px;
   margin-bottom: 5px;
+  height: 35px;
+  width: 70px;
+  opacity: 0.5;
+}
+
+.post-RightArea:focus-within .post-button {
+  opacity: 1;
 }
 
 .post-brbar {
   width: 600px;
   height: 8px;
-  background-color:#f7f6f5;
   color: lightgrey;
   border-right: 0.5px solid lightgrey;
   border-left: 0.5px solid lightgrey;
@@ -289,7 +301,7 @@
 
 
 .right-section-container {
-  background-color:#f7f6f5;
+  border: 0.5px solid lightgray;  
   width: 350px;
   height: 610px;
   border-radius: 10px;
@@ -318,7 +330,8 @@
   flex-direction: row;
   align-items: center;
   padding:3px;
-  border-bottom:0.5px solid grey;
+  border-bottom:0.5px solid lightgray;
+  height: 60px;
 }
 
 .followbox-center-name{
@@ -327,6 +340,7 @@
 
 .followbox-left{
   position: relative;
+  padding-left: 10px;
 }
 .followbox-photo {
   width: 40px;
@@ -343,7 +357,7 @@
     border-radius: 45px;
     position: absolute;
     top: 3px;
-    left: 5px;
+    left: 15px;
     background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
     background-size: 200% 100%;
     animation: loading 1.5s infinite;
@@ -354,7 +368,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 180px;
+  width: 170px;
   font-style: bold;
   padding-left: 10px;
   font-size: 0.8rem;
@@ -385,6 +399,7 @@
   margin-bottom: 5px;
   padding-top: 5px;
   font-size: 0.9rem;
+  height: 30px;
   }
 }
 
@@ -413,20 +428,20 @@
 }
 
 .post-user-photo {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
 }
 
 .placeholder-lazyloading-UserPhoto{
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
   transition: opacity 1.5s ease;    border-radius: 45px;
-    position: absolute;
-    top: 3px;
-    left: 3px;
+  position: absolute;
+  top: 13px;
+  left: 18px;
 }
 .feeds-poster-name {
   font-weight: bold;
@@ -508,7 +523,7 @@
 }
 
 .feeds-RightArea{
-  padding-left:5px;
+  padding-left:20px;
 }
 
 .feeds-LeftArea-skelton{

@@ -7,7 +7,7 @@ export const FeedSkelton = ({count}) => {
     {Array.from({ length: count }).map((_, index) => (
     <div className="card-skelton">
       <div className="feeds-LeftArea-skelton">
-        <Skeleton circle width={30} height={30}/>
+        <Skeleton circle width={40} height={40}/>
       </div>
       <div className="feeds-RightArea">
         <div className="feeds-RightTopArea-skelton">
