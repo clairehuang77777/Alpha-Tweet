@@ -249,7 +249,7 @@
   color: black;
   height: 80px;
   padding-top: 10px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   display: flex;
   justify-content: flex-start;
   border:0px solid;
@@ -1077,5 +1077,10 @@
   .feeds-RightCenterReplyArea-skelton .skeleton,
   .feeds-RightButtonArea-skelton .skeleton {
       width: 280px;
+    }
+
+  //避免手機版聚焦
+  textarea{
+      font-size: 16px;
     }
 }

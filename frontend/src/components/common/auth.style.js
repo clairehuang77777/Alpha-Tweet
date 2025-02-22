@@ -26,6 +26,11 @@ export const AuthButton = styled.button`
   background-color: #ff6600;
   color: white;
   padding: 5px;
+
+  /* 手機版調整 */
+  @media (max-width: 480px) {
+    height:50px;
+  }
 `
 
 export const AuthLink = styled.a`
