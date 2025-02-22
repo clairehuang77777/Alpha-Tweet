@@ -212,3 +212,13 @@ input {
   justify-content: flex-end;
   font-size: 0.8rem;
 }
+
+
+/*手機版*/
+@media (max-width: 480px) {
+  .layout {
+      display: flex;
+      flex-direction: column;
+      width: 100vw;
+    }
+}

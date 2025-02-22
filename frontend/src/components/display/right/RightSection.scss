@@ -997,4 +997,85 @@
   width: 1105px;
 }
 
+.feeds-RightTopArea-skelton .skeleton {
+  width: 250px;
+  height: 15px;
+}
 
+.feeds-RightCenterReplyArea-skelton .skeleton,
+.feeds-RightButtonArea-skelton .skeleton {
+  width: 450px;
+  height: 15px;
+}
+
+/*---------------------------------------*/
+/*手機版*/
+@media (max-width: 480px) {
+  .rightSection {
+      display: flex;
+      flex-direction: column;
+  }
+
+  //追蹤中區塊不見
+  .rightSection-right{
+    display: none;
+  }
+
+  //靠左對齊
+  .middle-header{
+    margin-left: 0px;
+  }
+
+  .rightSection{
+    margin-left: 0px;
+  }
+
+  //寬度改為100vw
+  .middle-header{
+    width: 100vw;
+  }
+
+  .feeds{
+    width: 100vw;
+  }
+
+  .post{
+    width: 100vw;
+  }
+
+  .post-brbar{
+    width: 100vw;
+  }
+
+  .feeds-poster-id{
+    display: none;
+  }
+  .feeds-poster-time{
+    font-size: 0.8rem;
+  }
+
+  .Intro{
+    width: 100vw;
+  }
+
+  .intro-header-pic{
+    width: 100vw;
+  }
+
+  .tabBar{
+    width: 100vw;
+  }
+
+  .feeds-RightArea{
+    width: calc(100vw - 55px);
+  }
+
+  .feeds-RightTopArea-skelton .skeleton {
+    width: 150px;
+  }
+  
+  .feeds-RightCenterReplyArea-skelton .skeleton,
+  .feeds-RightButtonArea-skelton .skeleton {
+      width: 280px;
+    }
+}

@@ -6,6 +6,12 @@ export const Pagecontainer = styled.div`
   margin: 50px;
   justify-content: center;
   align-items: center;
+
+  /* 手機版調整 */
+  @media (max-width: 480px) {
+    width:100vw;
+    margin:auto auto;
+  }
 `
 export const InputBoxConatiner =styled.div`
   margin: 10px;

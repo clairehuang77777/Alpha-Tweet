@@ -32,7 +32,7 @@ else if (location.pathname.startsWith("/")) {
           <div className="feeds-RightTopArea">
             <div className="feeds-poster-name">{item.UserFollowingUserName || item.UserName ||item.PostUserName}</div>
             <div className="feeds-poster-id">{item.UserFollowingIDname || item.UserIDname}</div>
-            <div className="feeds-poster-time">∙ {formattedTimeUser || formattedTimeReply || item.ReplierTime}</div>
+            <div className="feeds-poster-time">  {formattedTimeUser || formattedTimeReply || item.ReplierTime}</div>
           </div>
           <div className="feeds-RightCenterReplyArea">{RightCenterReplyArea}</div>
           <div className="feeds-RightCenterArea">
