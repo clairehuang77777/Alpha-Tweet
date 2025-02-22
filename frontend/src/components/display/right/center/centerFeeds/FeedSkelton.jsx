@@ -11,13 +11,13 @@ export const FeedSkelton = ({count}) => {
       </div>
       <div className="feeds-RightArea">
         <div className="feeds-RightTopArea-skelton">
-            <Skeleton width={250} height={15}/>
+            <Skeleton className="skeleton"/>
         </div>
         <div className="feeds-RightCenterReplyArea-skelton">
-            <Skeleton width={450} height={15}/>
+            <Skeleton className="skeleton"/>
         </div>
         <div className="feeds-RightButtonArea-skelton">
-            <Skeleton width={450} height={15}/>
+            <Skeleton className="skeleton"/>
         </div>
       </div>
     </div>

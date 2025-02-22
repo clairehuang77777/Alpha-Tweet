@@ -71,6 +71,10 @@
     &.num-5 {
       width: 140px;
     }
+
+    &.num-3 {
+      width: 140px;
+    }
 }
 
 .left-section-button-text:hover ~ .left-section-button-hover{
@@ -94,4 +98,59 @@
   font-size: 1.1rem;
   width: 150px;
   height: 45px;
+}
+
+/*---------------------------------------*/
+/*手機版*/
+
+@media (max-width: 480px) {
+  .left-section-container{
+    padding-left: 0px;
+  }
+
+  .left-section{
+    margin-left: 0px;
+  }
+
+  .left-section-flex-start-logo{
+    display: none;
+  }
+  
+  .left-section-container{
+    display: flex;
+    flex-direction: row;
+    padding-left: 0px;
+    width: 100vw;
+    position: fixed;
+    bottom: 0px;
+    height: 60px;
+    background-color: white;
+    z-index: 99;
+  }
+
+  .left-section-flex-start{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .left-section-button-text{
+    display: none;
+  }
+
+  .left-section-button{
+    width: 25vw;
+  }
+
+  .left-section-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 0px;
+    height: 60px;
+  }
+
+  .left-section-button-icon{
+      padding-left: 0px;
+  }
 }
