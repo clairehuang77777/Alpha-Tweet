@@ -58,6 +58,19 @@ export async function getSingleUserFeed(UserID){
   }
 }
 
+export async function getSingleUserFeedFromUserFollowingFeed(UserFollowingID){
+  console.log('[getSingleUserFeedFromUserFollowingFeed] UserFollowingID:', UserFollowingID); // 調試
+  try { 
+    const res = await axios.get(`${base_URL}/api/UserFollowingFeeds/${UserFollowingID}`);
+    console.log(res.data)
+    return res.data.data
+  }
+  catch(error) {
+    console.error('[getSingleUserFeedFromUserFollowingFeed]:',error)
+  }
+}
+
+
 export async function getSingleUserData(UserID){
   try { 
     const res = await axios.get(`${base_URL}/api/users/${UserID}`);

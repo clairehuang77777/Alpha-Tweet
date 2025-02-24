@@ -215,6 +215,34 @@ app.get('/api/Feeds/:UserID', async (req, res) => {
   }
 });
 
+// 製作api --從userFollowingFeeds拿該名userPost
+app.get('/api/UserFollowingFeeds/:UserFollowingID', async (req, res) => {
+  const { UserFollowingID } = req.params; // 提取 URL 中的 UserID
+  try {
+    const { rows: singleUserFeedsFromUFF } = await pool.query(
+      'SELECT * FROM "UserFollowingFeeds" WHERE "UserFollowingID" = $1 ORDER BY "PID" DESC;', [UserFollowingID]
+    );
+    if (singleUserFeedsFromUFF.length === 0) {
+      return res.status(404).send({
+        status: "failed",
+        message: "No feeds found for this user"
+      });
+    }
+    console.log('[Query Result - userFollowingFeeds Feeds]:', singleUserFeedsFromUFF);
+    res.send({
+      status: "success",
+      message: "Data fetched successfully",
+      data: singleUserFeedsFromUFF
+    });
+  } catch (err) {
+    console.error('[Error in /api/UserFollowingFeeds/:UserFollowingID]', err.message);
+    res.status(500).send({
+      status: "failed",
+      error: err.message
+    });
+  }
+});
+
 // 製作api 'GET User-Reply page'
 app.get('/api/replies/:ReplierID', async (req, res) => {
   const { ReplierID } = req.params; // 提取 URL 中的 ReplierID
@@ -374,7 +402,16 @@ app.post("/api/UserFollowingFeeds", async(req , res)=>{
   //把資料存進後端資料庫
   try {
     const result = await pool.query(`INSERT INTO "UserFollowingFeeds"(
-	"UserID", "UserFollowingID", "UserFollowingIDname", "UserFollowingUserName", "UserFollowingCountPostReply", "UserFollowingCountPostLike", "PostID", "PostContent", "PostTime", "photoSrc")
+	"UserID", 
+  "UserFollowingID", 
+  "UserFollowingIDname", 
+  "UserFollowingUserName", 
+  "UserFollowingCountPostReply", 
+  "UserFollowingCountPostLike", 
+  "PostID", 
+  "PostContent", 
+  "PostTime", 
+  "photoSrc")
 	VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,[newUserID, newUserID, newUserIDname, newUserName, 0, 0, 0, newnewPost,newcurrentTime, newphotoSrc]
     )
     console.log(result) 
