@@ -1,7 +1,7 @@
 import './Display.css'
 import { PopUpBackground } from './right/popup/PopupBackground'
 import { PopUpTweet } from './right/popup/PopUpTweet'
-import { popUpContext } from './popUpContext'
+import { popUpContext } from '../../popUpContext'
 import { useContext } from 'react'
 import { PopUpEditMode } from './right/popup/PopUpEditMode'
 

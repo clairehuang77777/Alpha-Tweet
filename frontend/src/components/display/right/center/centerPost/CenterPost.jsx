@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { popUpContext } from "../../../popUpContext"
+import { popUpContext } from "../../../../../popUpContext"
 import { clsx } from "clsx"
 import { images } from "../../../../../assets/images"
 import { getSingleUserData, postUserFollowingFeeds } from "../../../../../../../backend/api/alphatwitter"

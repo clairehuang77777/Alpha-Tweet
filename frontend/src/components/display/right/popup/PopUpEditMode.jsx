@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { useContext } from "react"
-import { popUpContext } from "../../popUpContext"
+import { popUpContext } from "../../../../popUpContext"
 import { images } from "../../../../assets/images"
 
 

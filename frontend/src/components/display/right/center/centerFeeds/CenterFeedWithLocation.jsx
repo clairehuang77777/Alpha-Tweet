@@ -9,12 +9,15 @@ import { myLikesContext } from "../../../../../myLikesContext";
 import { getSingleUserFeedFromUserFollowingFeed, getSingleUserLike, getSingleUserReply } from "../../../../../../../backend/api/alphatwitter";
 import { FeedSkelton } from "./FeedSkelton";
 import { DeletePostBtn } from "./FeedsCenterArea/DeletePostBtn";
+import { popUpContext } from "../../../../../popUpContext";
 
 export const CenterFeedWithLocation = () => {
   const { myFeeds, setMyFeeds } = useContext(myFeedsContext);
   const { myLikes, setMyLikes } = useContext(myLikesContext);
   const location = useLocation();
   const { UserID, LikerUserID, ReplierID } = useParams();
+  const {deletePopUp} = useContext(popUpContext)
+  const{deletePID} = useContext(popUpContext)
 
   // 本地状态来决定显示的内容
   const [display, setDisplay] = useState([]);
@@ -117,7 +120,7 @@ export const CenterFeedWithLocation = () => {
     return () => {
       isMounted = false; // 防止组件卸载后更新状态
     };
-  }, [location.pathname, UserID, LikerUserID]);
+  }, [location.pathname, UserID, LikerUserID,deletePopUp, deletePID]);
 
   return (
     <>
@@ -127,7 +130,7 @@ export const CenterFeedWithLocation = () => {
       (Array.isArray(display) ? display : []).map((item, index) => {
         return (
           <CenterFeed
-            key={index}
+            key={item.PID}
             RightCenterReplyArea={RightCenterReplyContent}
             RightCenterButtonArea={
               location.pathname.startsWith("/user/U") || location.pathname.startsWith("/user/likes") ? (<ButtonArea item={item}/>):null}

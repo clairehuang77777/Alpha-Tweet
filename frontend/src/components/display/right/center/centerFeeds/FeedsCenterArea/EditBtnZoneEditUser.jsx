@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { useNavigate } from "react-router-dom"
-import { popUpContext } from "../../../../popUpContext"
+import { popUpContext } from "../../../../../../popUpContext"
 
 
 export const EditBtnZoneEditUser = () => {

@@ -1,7 +1,7 @@
 import { RightSectionDisplayRightFollowBox } from './RightSectionDisplayRightFollowBox'
 import { clsx } from "clsx"
 import { useContext,useState,useEffect } from "react"
-import { popUpContext } from "../../../popUpContext"
+import { popUpContext } from "../../../../../popUpContext"
 import { getAllUserData, base_URL } from '../../../../../../../backend/api/alphatwitter'
 
 

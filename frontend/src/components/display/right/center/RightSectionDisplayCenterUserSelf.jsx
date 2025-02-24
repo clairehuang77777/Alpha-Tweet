@@ -7,9 +7,10 @@ import { EditBtnZoneSubscript } from "./centerFeeds/FeedsCenterArea/EditBtnZoneS
 import { useLocation } from "react-router-dom"
 import { images } from "../../../../assets/images" 
 
+
 export const RightSectionDisplayCenterUserSelf = () => {
   const location = useLocation()
-
+  
  
   // 提取 UserID（例如，路徑 "/user/:UserID"）
   const userId = location.pathname.split("/").pop(); // 提取路徑最後一部分作為 UserID
@@ -19,7 +20,7 @@ export const RightSectionDisplayCenterUserSelf = () => {
     userId === "U01" ? <EditBtnZoneEditUser /> : <EditBtnZoneSubscript />;
 
   return (
-    <>
+    <>    
     <CenterWithLocation />
     <CenterIntro editBtnZone={EditBtnZoneProps} />
     <CenterTabBar/>

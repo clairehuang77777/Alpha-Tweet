@@ -2,7 +2,7 @@ import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { LoginPage, MainPage, RegisterPage, BackendLoginPage, ReplyListPage, UserSelfPage, UserSelfReplyPage, UserSelfLikesPage, AdminMainPage, AdminMainUserPage } from './page/index'
 import { useState } from 'react'
-import {popUpContext} from './components/display/popUpContext'
+import {popUpContext} from './popUpContext'
 import { userContext } from './userContext'
 import { feedsContext } from './feedsContext'
 import {feedsIFollowContext} from './feedsIFollowContext'
@@ -24,14 +24,15 @@ function App() {
   const [myLikes, setMyLikes] = useState([])
   const [userID, setUserID] = useState([])
   const [feedIsUpdate, setFeedIsUpdate] = useState(false)
-
+  const [deletePopUp, setDeletePopUp] = useState(false)
+  const [deletePID, setDeletePID] = useState(null)
 
   const basename = import.meta.env.VITE_BASE_URL
 
   return (
   <SkeletonTheme baseColor="#e0e0e0" highlightColor="#f0f0f0">
     <BrowserRouter basename={basename}>
-      <popUpContext.Provider value={{popUp, setPopUp, editMode, setEditMode}}>
+      <popUpContext.Provider value={{popUp, setPopUp, editMode, setEditMode, deletePopUp, setDeletePopUp, deletePID, setDeletePID}}>
       <userContext.Provider value={{users, setUsers}}>
       <feedsContext.Provider value={{feeds, setFeeds}}>
       <feedsIFollowContext.Provider value={{feedsIFollow, setFeedsIFollow}}>

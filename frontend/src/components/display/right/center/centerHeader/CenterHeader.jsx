@@ -1,6 +1,6 @@
 
 import { useContext } from "react"
-import { popUpContext } from "../../../popUpContext"
+import { popUpContext } from "../../../../../popUpContext"
 import clsx from "clsx"
 
 export const CenterHeader = ({leftcontent=null, rightTitle="首頁", feedCount=null }) => {

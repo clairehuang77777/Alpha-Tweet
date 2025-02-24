@@ -570,6 +570,63 @@ input[type="checkbox"]:checked + label + .delete-btn {
   padding-left: 15px;
 }
 
+/*Popup*/
+.cover-image-delete {
+    position: absolute;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100vw;
+    background-color: hsla(0, 0%, 13%, 0.5);   
+}
+
+.pop-up-message-delete {
+  position: relative;
+  z-index: 1000;
+  color: black;
+  background-color: white;
+  width: 317px;
+  height: 292px;
+  border-radius: 15px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+}
+
+.confirm-delete-text-1 {
+  margin-left: 30px;
+}
+
+.confirm-delete-text-2 {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.agreeDeleteBtn {
+  width: 250px;
+  height: 50px;
+  border: 0px;
+  border-radius: 10px;
+  font-size: 20px;
+  background-color: #f77d2b;
+  color: white;
+  box-shadow: 2px 2px 7px 2px lightgrey;
+  margin-left: 30px;
+}
+
+.notAgreeDeleteBtn {
+  margin-top: 10px;
+  width: 250px;
+  height: 50px;
+  border: 0px;
+  border-radius: 10px;
+  font-size: 20px;
+  color: #d9d9d9;
+  margin-left: 30px;
+}
+
 /*Right Section -- Center*/
 /*Center Intro*/
 
