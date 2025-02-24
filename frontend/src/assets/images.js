@@ -22,6 +22,7 @@ export const images = {
   setting:`${BASE_URL}setting.png`,
   setting_click:`${BASE_URL}setting_click.png`,
   user:`${BASE_URL}user.png`,
-  user2:`${BASE_URL}user2.png`
+  user2:`${BASE_URL}user2.png`,
+  delete3:`${BASE_URL}delete3.png`
 };
 

@@ -6,8 +6,9 @@ import { ReplyArea } from "./FeedsCenterArea/ReplyArea";
 import { ButtonAreaWithRedHeart } from "./FeedsCenterArea/ButtonAreaWithRedHeart";
 import { myFeedsContext } from "../../../../../myFeedsContext";
 import { myLikesContext } from "../../../../../myLikesContext";
-import { getSingleUserFeed, getSingleUserLike, getSingleUserReply } from "../../../../../../../backend/api/alphatwitter";
+import { getSingleUserFeedFromUserFollowingFeed, getSingleUserLike, getSingleUserReply } from "../../../../../../../backend/api/alphatwitter";
 import { FeedSkelton } from "./FeedSkelton";
+import { DeletePostBtn } from "./FeedsCenterArea/DeletePostBtn";
 
 export const CenterFeedWithLocation = () => {
   const { myFeeds, setMyFeeds } = useContext(myFeedsContext);
@@ -94,8 +95,9 @@ export const CenterFeedWithLocation = () => {
           }
          else if (location.pathname.startsWith("/user"))
           {
+          const UserFollowingID = UserID
           // 处理 Feeds 数据
-          const myFeedsData = await getSingleUserFeed(UserID);
+          const myFeedsData = await getSingleUserFeedFromUserFollowingFeed(UserFollowingID);
           if (isMounted) {
             setDisplay(myFeedsData || defaultMyFeeds);
             console.log(display)
@@ -127,7 +129,10 @@ export const CenterFeedWithLocation = () => {
           <CenterFeed
             key={index}
             RightCenterReplyArea={RightCenterReplyContent}
-            RightCenterButtonArea={RightCenterButtonContent}
+            RightCenterButtonArea={
+              location.pathname.startsWith("/user/U") || location.pathname.startsWith("/user/likes") ? (<ButtonArea item={item}/>):null}
+            DeleteIconArea={location.pathname.startsWith("/user/U") ? (<DeletePostBtn item={item}/>
+            ) : null}
             item={item}
           />
         )
