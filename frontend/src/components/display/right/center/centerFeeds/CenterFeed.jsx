@@ -1,7 +1,7 @@
 import { ButtonArea } from "./FeedsCenterArea/ButtonArea"
 import { useState } from "react"
 
-export const CenterFeed = ({ item, RightCenterReplyArea, RightCenterButtonArea}) => {
+export const CenterFeed = ({ item, RightCenterReplyArea, RightCenterButtonArea, DeleteIconArea}) => {
   const [isLoadingUserPhoto, setIsLoadingUserPhoto] = useState(false)
   let formattedTimeReply =''
   let formattedTimeUser =''
@@ -33,6 +33,9 @@ else if (location.pathname.startsWith("/")) {
             <div className="feeds-poster-name">{item.UserFollowingUserName || item.UserName ||item.PostUserName}</div>
             <div className="feeds-poster-id">{item.UserFollowingIDname || item.UserIDname}</div>
             <div className="feeds-poster-time">  {formattedTimeUser || formattedTimeReply || item.ReplierTime}</div>
+            <div className={`feeds-poster-delete-icon-${item.PostID}`}>  
+            {DeleteIconArea}
+            </div>
           </div>
           <div className="feeds-RightCenterReplyArea">{RightCenterReplyArea}</div>
           <div className="feeds-RightCenterArea">
