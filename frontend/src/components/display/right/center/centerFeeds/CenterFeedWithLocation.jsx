@@ -6,7 +6,7 @@ import { ReplyArea } from "./FeedsCenterArea/ReplyArea";
 import { ButtonAreaWithRedHeart } from "./FeedsCenterArea/ButtonAreaWithRedHeart";
 import { myFeedsContext } from "../../../../../myFeedsContext";
 import { myLikesContext } from "../../../../../myLikesContext";
-import { getSingleUserFeedFromUserFollowingFeed, getSingleUserLike, getSingleUserReply } from "../../../../../../../backend/api/alphatwitter";
+import { getSingleUserFeedFromUserFollowingFeed, getSingleUserLike, getSingleUserReply, getCommentByPID } from "../../../../../../../backend/api/alphatwitter";
 import { FeedSkelton } from "./FeedSkelton";
 import { DeletePostBtn } from "./FeedsCenterArea/DeletePostBtn";
 import { popUpContext } from "../../../../../popUpContext";
@@ -15,10 +15,11 @@ export const CenterFeedWithLocation = () => {
   const { myFeeds, setMyFeeds } = useContext(myFeedsContext);
   const { myLikes, setMyLikes } = useContext(myLikesContext);
   const location = useLocation();
-  const { UserID, LikerUserID, ReplierID } = useParams();
+  const { UserID, LikerUserID, ReplierID, PID } = useParams();
   const {deletePopUp} = useContext(popUpContext)
   const{deletePID} = useContext(popUpContext)
   const{heartAUDY, setHeartAUDY} = useContext(popUpContext)
+  const{hasNewReply,setHasNewReply} = useContext(popUpContext)
 
   // 本地状态来决定显示的内容
   const [display, setDisplay] = useState([]);
@@ -26,6 +27,7 @@ export const CenterFeedWithLocation = () => {
   const [RightCenterButtonContent, setRightCenterButtonContent] = useState(null);
   //feedSkeleton
   const [isLoading, setIsLoading]=useState(true)
+
 
 
   // 默认数据
@@ -97,7 +99,21 @@ export const CenterFeedWithLocation = () => {
             setIsLoading(false)
             }
           }
-         else if (location.pathname.startsWith("/user"))
+          else if (location.pathname.startsWith("/user/comment/"))
+          {
+            // let itemPID = 53
+            console.log(PID)
+            const commentItems = await getCommentByPID(PID)
+            console.log(commentItems)
+            let myCommentData =commentItems.data
+            console.log(myCommentData)
+            // 更新 display 並結束 loading
+            if (isMounted) {
+              setDisplay(myCommentData || defaultMyFeeds);
+              setIsLoading(false);
+              setHasNewReply(false)
+            }
+          } else if (location.pathname.startsWith("/user"))
           {
           const UserFollowingID = UserID
           // 处理 Feeds 数据
@@ -122,7 +138,15 @@ export const CenterFeedWithLocation = () => {
     return () => {
       isMounted = false; // 防止组件卸载后更新状态
     };
-  }, [location.pathname, UserID, LikerUserID,deletePopUp, deletePID,heartAUDY]);
+  }, [location.pathname, UserID, LikerUserID,deletePopUp, deletePID,heartAUDY, PID, hasNewReply]);
+
+  // 新增這段來監聽 display 的變化
+  useEffect(() => {
+    console.log('display 更新後:', display);
+    if (display.length > 0) {
+    setIsLoading(false)
+    }
+  }, [display]);
 
   return (
     <>
@@ -132,7 +156,7 @@ export const CenterFeedWithLocation = () => {
       (Array.isArray(display) ? display : []).map((item, index) => {
         return (
           <CenterFeed
-            key={item.PID}
+            key={location.pathname.startsWith("/user/comment/")? item.commentID : item.PID}
             RightCenterReplyArea={RightCenterReplyContent}
             RightCenterButtonArea={
               location.pathname.startsWith("/user/U") || location.pathname.startsWith("/user/likes") ? (<ButtonArea item={item}/>):null}

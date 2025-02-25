@@ -5,7 +5,8 @@ export const CenterFeed = ({ item, RightCenterReplyArea, RightCenterButtonArea, 
   const [isLoadingUserPhoto, setIsLoadingUserPhoto] = useState(false)
   let formattedTimeReply =''
   let formattedTimeUser =''
-  console.log(item)
+  let formattedTimeComment=''
+  // console.log(item)
 
 // 處理日期格式
 if (location.pathname.startsWith("/user/reply")) {
@@ -13,13 +14,17 @@ if (location.pathname.startsWith("/user/reply")) {
     if (postTime) { // 確認 postTime 存在且有效
         formattedTimeReply = new Date(postTime).toISOString().replace('T', ' ').slice(0, 16);
     }
-} 
-else if (location.pathname.startsWith("/")) {
-    const postTime = item.PostTime;
-    if (postTime) { // 同樣做有效性檢查
+} else if (location.pathname.startsWith("/user/comment/")){
+  const postTime = item.commentDate;
+ if (postTime) { // 同樣做有效性檢查
         formattedTimeUser = new Date(postTime).toISOString().replace('T', ' ').slice(0, 16);
     }
-}
+} else if (location.pathname.startsWith("/")) {
+    const postTime = item.PostTime;
+    if (postTime) { // 同樣做有效性檢查
+        formattedTimeComment = new Date(postTime).toISOString().replace('T', ' ').slice(0, 16);
+    }
+  }
 
 
   return (
@@ -30,16 +35,16 @@ else if (location.pathname.startsWith("/")) {
         </div>
         <div className="feeds-RightArea">
           <div className="feeds-RightTopArea">
-            <div className="feeds-poster-name">{item.UserFollowingUserName || item.UserName ||item.PostUserName}</div>
-            <div className="feeds-poster-id">{item.UserFollowingIDname || item.UserIDname}</div>
-            <div className="feeds-poster-time">  {formattedTimeUser || formattedTimeReply || item.ReplierTime}</div>
+            <div className="feeds-poster-name">{item.UserFollowingUserName || item.UserName ||item.PostUserName||item.commentUserName}</div>
+            <div className="feeds-poster-id">{item.UserFollowingIDname || item.UserIDname || item.commentUserIDname}</div>
+            <div className="feeds-poster-time">  {formattedTimeUser || formattedTimeReply || item.ReplierTime || formattedTimeComment}</div>
             <div className={`feeds-poster-delete-icon-${item.PostID}`}>  
             {DeleteIconArea}
             </div>
           </div>
           <div className="feeds-RightCenterReplyArea">{RightCenterReplyArea}</div>
           <div className="feeds-RightCenterArea">
-            <div className="feeds-poster-content">{item.PostContent || item.ReplierContent}</div>
+            <div className="feeds-poster-content">{item.PostContent || item.ReplierContent || item.commentText}</div>
           </div>
           <div className="feeds-RightButtonArea">
             {RightCenterButtonArea}

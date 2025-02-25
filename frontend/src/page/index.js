@@ -8,5 +8,6 @@ import { UserSelfReplyPage } from "./UserSelfReplyPage";
 import { UserSelfLikesPage } from "./UserSelfLikesPage"
 import {AdminMainPage} from './AdminMainPage'
 import {AdminMainUserPage} from './AdminMainUserPage'
+import { CommentPage } from "./CommentPage";
 
-export { MainPage, LoginPage, RegisterPage, BackendLoginPage, ReplyListPage, UserSelfPage, UserSelfReplyPage, UserSelfLikesPage, AdminMainPage, AdminMainUserPage};
+export { MainPage, LoginPage, RegisterPage, BackendLoginPage, ReplyListPage, UserSelfPage, UserSelfReplyPage, UserSelfLikesPage, AdminMainPage, AdminMainUserPage,CommentPage};

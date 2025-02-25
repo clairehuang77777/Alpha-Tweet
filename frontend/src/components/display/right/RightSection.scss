@@ -179,7 +179,7 @@
 }
 
 .feeds-poster-ReplyArea {
-  display: none;
+  // display: none;
 }
 
 .feeds-poster-heartNumber{
@@ -229,6 +229,35 @@
     animation: loading 1.5s infinite;
     transition: opacity 1.5s ease;
 }
+
+//post--reply -- action
+.footer-reply-area{
+  position: fixed;
+    bottom: 60px;
+    background-color: white;
+    width: 100%;
+    border: 0.8px solid lightgray;
+    box-shadow: 2px 2px 7px 2px lightgrey;
+    display: flex;
+    align-items: center;
+}
+
+#footerReply{
+  height: 30px;
+  margin: 10px;
+  width: 70%;
+}
+
+.footerReply-submit-btn{
+  background: orangered;
+  height: 30px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 7px 2px lightgrey;
+  width: 15%;
+  color: white;
+  padding: 0px;
+}
+
 
 /*Right Section -- Center*/
 /*Post*/

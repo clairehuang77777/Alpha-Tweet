@@ -462,6 +462,69 @@ app.delete("/api/UserFollowingFeeds/:PID", async (req, res)=> {
 }
 )
 
+//透過PID撈取item返回
+app.get("/api/UserFollowingFeeds/PID/:PID", async(req, res)=>{
+   const { PID } = req.params; // 提取 URL 中的 
+   console.log(PID)
+   try {
+    const result = await pool.query(
+      'SELECT * FROM "UserFollowingFeeds" WHERE "PID" = $1;', [PID]);
+      console.log(result.rows[0])
+      let item = result.rows[0]
+      res.json(item)
+    return PIDitem
+    }catch(error){
+      console.error('[Error in /api/UserFollowingFeeds/:PID', error.message);
+    }
+   }
+)
+
+//透過PID撈取該則貼文回覆
+app.get("/api/commentTable/:PID", async (req, res)=>{
+  const { PID } = req.params; // 提取 URL 中的 
+  console.log(PID)
+  try {
+    const result = await pool.query(
+      'SELECT * FROM "commentTable" WHERE "PID" = $1;', [PID]);
+    console.log(result.rows)
+    let commentItems = result.rows
+    res.json(commentItems)
+    }
+  catch(error){
+      console.error('[Error in /api/commentTable/:PID', error.message)
+    }
+  }
+)
+
+//回覆推上server
+app.post("/api/commentTable", async(req , res)=>{
+  const data = req.body
+  console.log(data)
+  const PID = data.PID 
+  const commentUserIDname = data.UserIDname 
+  const commentUserName = data.UserName 
+  const userPhotoSrc = data.userPhotoSrc
+  const commentText = data.commentText
+
+  //把資料存進後端資料庫
+  try {
+    const result = await pool.query(`INSERT INTO "commentTable"(
+    "PID", 
+    "commentUserName",
+    "commentUserIDname",
+    "commentText",
+    "photoSrc"
+    )
+	VALUES ($1, $2, $3, $4, $5)`,[PID, commentUserName, commentUserIDname, commentText, userPhotoSrc]
+    )
+    console.log(result) 
+    res.json("success")
+  }
+  catch(error){
+    console.error(error)
+  }
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

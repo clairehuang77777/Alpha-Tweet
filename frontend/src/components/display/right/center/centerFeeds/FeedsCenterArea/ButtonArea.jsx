@@ -2,7 +2,7 @@ import { useLocation } from "react-router"
 import { images } from "../../../../../../assets/images"
 import { popUpContext } from "../../../../../../popUpContext"
 import {useContext} from "react"
-import { updateHeartNum } from "../../../../../../../../backend/api/alphatwitter"
+import { updateHeartNum, getFeedByPID } from "../../../../../../../../backend/api/alphatwitter"
 import { useNavigate } from "react-router"
 import { clsx } from "clsx"
 
@@ -13,6 +13,8 @@ export const ButtonArea = ({item}) => {
 
   //取得按讚的貼文ID
   const{heartAUDY, setHeartAUDY} = useContext(popUpContext)
+  const{theCommentPost, setTheCommentPost} = useContext(popUpContext)
+
   console.log(heartAUDY)
   console.log(typeof heartAUDY)
 
@@ -65,11 +67,27 @@ export const ButtonArea = ({item}) => {
     }
   }
 
+  async function handleReplyClick(itemPID){
+    console.log(itemPID)
+    localStorage.setItem("PID",itemPID)
+    navigate(`/user/comment/${itemPID}`)
+    //透過itemPID撈一整個item物件
+    try {
+      const item = await getFeedByPID(itemPID)
+      console.log(item)
+      const thepost = item.data
+      setTheCommentPost(thepost)
+      navigate(`/user/comment/${itemPID}`)
+    }
+    catch(error){
+      console.error(error)
+    }
+  }
+
   return (
     <>
-          <div className="feeds-poster-ReplyArea">
+          <div className="feeds-poster-ReplyArea" onClick={()=>handleReplyClick(item.PID)}>
             <img className="feeds-poster-ReplyIcon" src={images.comment}></img>
-            <div className="feeds-poster-ReplyNumber">{replyNum || 0 }</div>
           </div>
           <div className="feeds-poster-heartArea" onClick={()=>handleHeartClick(item.PID)}>
             <img className={clsx("feeds-poster-heartIcon",{"red":isLiked})} src={isLiked ?images.red_heart : images.heart}></img>

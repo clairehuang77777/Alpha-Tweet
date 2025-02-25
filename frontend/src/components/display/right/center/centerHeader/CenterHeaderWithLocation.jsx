@@ -21,7 +21,10 @@ export const CenterWithLocation = () => {
     location ==='/main/tweet' ||
     location==='/replylist_replymodal'){
     rightTitle=<p className="toLeftMainTitle">首頁</p>
-  } 
+  } else if(location.startsWith("/user/comment/")){
+    leftcontent=<><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></>
+    rightTitle="貼文"
+  }
   else if (location==='/replylist'){
     leftcontent=<><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></>
     rightTitle="推文"

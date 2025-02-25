@@ -15,7 +15,7 @@ export { base_URL }
 export async function getAllUserData(){
   try { 
     const res = await axios.get(`${base_URL}/api/users`);
-    console.log(res.data.data)
+    // console.log(res.data.data)
     return res.data.data
   }
   catch(error) {
@@ -148,7 +148,7 @@ export async function UserLoginRequest(userTypeUserName, userTypePW){
 export async function getUserIDFromUserName(UserName){
   try {
     const res = await axios.get(`${base_URL}/api/getUserID/${UserName}`)
-    console.log(res)
+    // console.log(res)
     return res.data
   }
   catch(error){
@@ -199,3 +199,43 @@ export async function updateHeartNum(likeNum, heartPID){
   catch(error){    
     console.error("heart Num update fail",error)
   }}
+
+//透過PID撈取一條row item返回  
+export async function getFeedByPID(itemPID){
+  try {
+    const res = await axios.get(`${base_URL}/api/UserFollowingFeeds/PID/${itemPID}`)
+    console.log(res)
+    return res
+  }catch(error){
+    console.error(error)
+  }
+}  
+
+//透過PID撈取該則貼文的回覆
+export async function getCommentByPID(itemPID){
+  try {
+    const res = await axios.get(`${base_URL}/api/commentTable/${itemPID}`)
+    console.log(res)
+    return res
+  }catch(error){
+    console.error(error)
+  }
+}
+
+//把回覆推到server上
+export async function postUserReply(PID,UserName,UserIDname, userPhotoSrc,commentText){
+  try {
+    const res = await axios.post(`${base_URL}/api/commentTable`,{
+      PID,
+      UserName,
+      UserIDname, 
+      userPhotoSrc,
+      commentText
+    })
+    console.log(res)
+    return res
+  }
+  catch(error){
+    console.error(error)
+  }
+}
