@@ -5,13 +5,15 @@ import { feedsIFollowContext } from "../../../../../feedsIFollowContext"
 import { feedIsUpdateContext } from "../../../../../feedIsUpdateContext"
 import { FeedSkelton } from "../centerFeeds/FeedSkelton"
 import "react-loading-skeleton"
-
+import { ButtonArea } from "../centerFeeds/FeedsCenterArea/ButtonArea"
+import { popUpContext } from "../../../../../popUpContext"
 
 export const CenterFeedForMainFeed = ({ RightCenterReplyArea, RightCenterButtonArea }) => {
 const {feedsIFollow, setFeedsIFollow} = useContext(feedsIFollowContext)
 const {feedIsUpdate, setFeedIsUpdate} = useContext(feedIsUpdateContext)
 //使用reactloading
 const [isLoading, setIsLoading]=useState(true)
+const{heartAUDY, setHeartAUDY} = useContext(popUpContext)
 
 
   useEffect(()=> {
@@ -25,6 +27,7 @@ const [isLoading, setIsLoading]=useState(true)
       if (isMounted) {
         setFeedsIFollow(userFollowingFeeds || [])
         setIsLoading(false)
+        setHeartAUD(false)
       }
       setFeedIsUpdate(false)
 
@@ -39,7 +42,7 @@ const [isLoading, setIsLoading]=useState(true)
   return()=> {
     isMounted = false ///防止組建卸載後更新
   }
-  },[setFeedsIFollow, feedIsUpdate])
+  },[setFeedsIFollow, feedIsUpdate, heartAUDY])
   
 
 // const displayFeedsIFollow = Array.isArray(feedsIFollow) && feedsIFollow.length > 0 
@@ -56,7 +59,7 @@ const [isLoading, setIsLoading]=useState(true)
          key={index}
          item={item}
          RightCenterReplyArea={RightCenterReplyArea} 
-        RightCenterButtonArea={RightCenterButtonArea}/>     
+        RightCenterButtonArea={<ButtonArea item={item}/>}/>     
       ))
     )}
     </>

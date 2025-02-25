@@ -6,7 +6,7 @@ import { popUpContext } from "../../../../../../popUpContext"
 export const DeletePostBtn = ({ item }) => {
   const{deletePopUp, setDeletePopUp} = useContext(popUpContext)
   const{deletePID, setDeletePID} = useContext(popUpContext)
-  console.log(deletePID)
+  // console.log(deletePID)
  // 每個 DeletePostBtn 都有自己的 checked 狀態
   const [isChecked, setIsChecked] = useState(false);
   

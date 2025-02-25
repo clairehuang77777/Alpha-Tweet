@@ -21,12 +21,12 @@ export const LeftSectionButton = (props) => {
         //從local storage中取出userName
         const token = localStorage.getItem("token")
         const decoded_Token = jwtDecode(token)
-        console.log(decoded_Token)
+        // console.log(decoded_Token)
         //從decoded_Token中取出Account
         const selectedAccount = decoded_Token.Account
 
         const resData = await getUserIDFromUserName(selectedAccount)
-        console.log(resData)
+        // console.log(resData)
         //取出資料
         const getID = resData.UserID
         const getUserName = resData.UserName
@@ -39,7 +39,7 @@ export const LeftSectionButton = (props) => {
         localStorage.setItem("PhotoSrc",getUserPhotoSrc)
         //存入state
         setUserID(getID)
-        console.log(userID)
+        // console.log(userID)
     }
     catch(error){
       console.error(error)

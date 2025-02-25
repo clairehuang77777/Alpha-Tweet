@@ -26,13 +26,14 @@ function App() {
   const [feedIsUpdate, setFeedIsUpdate] = useState(false)
   const [deletePopUp, setDeletePopUp] = useState(false)
   const [deletePID, setDeletePID] = useState(null)
+  const [heartAUDY, setHeartAUDY] = useState([])
 
   const basename = import.meta.env.VITE_BASE_URL
 
   return (
   <SkeletonTheme baseColor="#e0e0e0" highlightColor="#f0f0f0">
     <BrowserRouter basename={basename}>
-      <popUpContext.Provider value={{popUp, setPopUp, editMode, setEditMode, deletePopUp, setDeletePopUp, deletePID, setDeletePID}}>
+      <popUpContext.Provider value={{popUp, setPopUp, editMode, setEditMode, deletePopUp, setDeletePopUp, deletePID, setDeletePID, heartAUDY, setHeartAUDY}}>
       <userContext.Provider value={{users, setUsers}}>
       <feedsContext.Provider value={{feeds, setFeeds}}>
       <feedsIFollowContext.Provider value={{feedsIFollow, setFeedsIFollow}}>

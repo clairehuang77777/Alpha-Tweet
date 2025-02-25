@@ -18,6 +18,7 @@ export const CenterFeedWithLocation = () => {
   const { UserID, LikerUserID, ReplierID } = useParams();
   const {deletePopUp} = useContext(popUpContext)
   const{deletePID} = useContext(popUpContext)
+  const{heartAUDY, setHeartAUDY} = useContext(popUpContext)
 
   // 本地状态来决定显示的内容
   const [display, setDisplay] = useState([]);
@@ -107,6 +108,7 @@ export const CenterFeedWithLocation = () => {
             setRightCenterButtonContent(<ButtonArea />);
             setRightCenterReplyContent(null);
             setIsLoading(false)
+            setHeartAUD(false)
             }
           }
       }
@@ -120,7 +122,7 @@ export const CenterFeedWithLocation = () => {
     return () => {
       isMounted = false; // 防止组件卸载后更新状态
     };
-  }, [location.pathname, UserID, LikerUserID,deletePopUp, deletePID]);
+  }, [location.pathname, UserID, LikerUserID,deletePopUp, deletePID,heartAUDY]);
 
   return (
     <>
