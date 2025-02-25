@@ -174,3 +174,28 @@ export async function postUserFollowingFeeds(UserID,UserIDname, UserName, newPos
     console.error(error)
   }
 }
+
+//刪除串文
+export async function deleteSingleFeed(PID){
+  try{
+    const res = await axios.delete(`${base_URL}/api/UserFollowingFeeds/${PID}`)
+    console.log(res)
+    return res
+  }catch(error){
+    console.error("api error",error)
+  }
+}
+
+//更新愛心數字
+export async function updateHeartNum(likeNum, heartPID){
+  try{
+    const res = await axios.post('/api/newHeartNum',{
+      likeNum,
+      heartPID
+    })
+    console.log(res)
+    return res
+  }  
+  catch(error){    
+    console.error("heart Num update fail",error)
+  }}

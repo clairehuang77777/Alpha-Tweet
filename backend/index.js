@@ -422,6 +422,46 @@ app.post("/api/UserFollowingFeeds", async(req , res)=>{
   }
 })
 
+//更新愛心數字
+app.post("/api/newHeartNum", async(req , res)=>{
+  const data = req.body
+  console.log(data)
+  const newlikeNum = parseInt(data.likeNum)
+  const newheartPID = parseInt(data.heartPID)
+
+  console.log('newheartPID:', newheartPID, 'Type:', typeof newheartPID);
+
+  //把資料存進後端資料庫
+    try {
+      const result = await pool.query(`UPDATE public."UserFollowingFeeds" SET "UserFollowingCountPostLike" = $1 WHERE "PID" = $2
+  `, [newlikeNum, newheartPID])
+      console.log('[Update Result]:', result)
+      res.json("update succeed!")
+    }
+    catch(error){
+      console.error('[update failed--]',error)
+    }
+})
+
+//刪除貼文
+app.delete("/api/UserFollowingFeeds/:PID", async (req, res)=> {
+  const { PID } = req.params; // 提取 URL 中的 
+  console.log(PID)
+  // UserName
+  try {
+    const deleteResult = await pool.query(
+      'DELETE FROM "UserFollowingFeeds" WHERE "PID" = $1;', [PID]);
+    //避免查詢結果為空
+    if(!deleteResult){
+      return res.status(401).json({message:"刪除有問題"})
+    }
+    res.json("sucess delete!")  
+  }catch(error){
+    console.error('[Error in /api/UserFollowingFeeds/:PID', err.message)
+  }
+}
+)
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
