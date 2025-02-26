@@ -87,10 +87,16 @@ export const ButtonArea = ({item}) => {
   return (
     <>
           <div className="feeds-poster-ReplyArea" onClick={()=>handleReplyClick(item.PID)}>
+            <picture>
+            <source srcset={images.comment_dark} media="(prefers-color-scheme: dark)"></source>
             <img className="feeds-poster-ReplyIcon" src={images.comment}></img>
+            </picture>
           </div>
           <div className="feeds-poster-heartArea" onClick={()=>handleHeartClick(item.PID)}>
+          <picture>
+            <source srcset={images.heart_dark} media="(prefers-color-scheme: dark)"></source>
             <img className={clsx("feeds-poster-heartIcon",{"red":isLiked})} src={isLiked ?images.red_heart : images.heart}></img>
+          </picture>
             <div className="feeds-poster-heartNumber" >{likeNum || 0}</div>
           </div>
     </>

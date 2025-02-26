@@ -22,7 +22,8 @@ export const CenterWithLocation = () => {
     location==='/replylist_replymodal'){
     rightTitle=<p className="toLeftMainTitle">首頁</p>
   } else if(location.startsWith("/user/comment/")){
-    leftcontent=<><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></>
+    leftcontent=<><picture>
+            <source srcset={images.back_dark} media="(prefers-color-scheme: dark)"></source><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></picture></>
     rightTitle="貼文"
   }
   else if (location==='/replylist'){
@@ -33,14 +34,16 @@ export const CenterWithLocation = () => {
     location.startsWith('/user/likes/U01') || 
     location.startsWith('/user/reply/U01')
   ){
-    leftcontent=<><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></>
+    leftcontent=<><picture>
+            <source srcset={images.back_dark} media="(prefers-color-scheme: dark)"></source><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></picture></>
     rightTitle="claire"
     feedCount=7
   }else if (location.startsWith('/user/U02') || 
     location.startsWith('/user/likes/U02') || 
     location.startsWith('/user/reply/U02')
   ){
-    leftcontent=<><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></>
+    leftcontent=<><picture>
+            <source srcset={images.back_dark} media="(prefers-color-scheme: dark)"></source><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></picture></>
     rightTitle="rose"
     feedCount=3
   }
@@ -48,7 +51,8 @@ export const CenterWithLocation = () => {
     location.startsWith('/user/likes/U03') || 
     location.startsWith('/user/reply/U03')
   ){
-    leftcontent=<><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></>
+    leftcontent=<><picture>
+            <source srcset={images.back_dark} media="(prefers-color-scheme: dark)"></source><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></picture></>
     rightTitle="Jenny"
     feedCount=5
   }
@@ -56,7 +60,8 @@ export const CenterWithLocation = () => {
     location.startsWith('/user/likes/U04') || 
     location.startsWith('/user/reply/U04')
   ){
-    leftcontent=<><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></>
+    leftcontent=<><picture>
+            <source srcset={images.back_dark} media="(prefers-color-scheme: dark)"></source><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></picture></>
     rightTitle="Lisa"
     feedCount=3
   }
@@ -64,7 +69,8 @@ export const CenterWithLocation = () => {
     location.startsWith('/user/likes/U05') || 
     location.startsWith('/user/reply/U05')
   ){
-    leftcontent=<><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></>
+    leftcontent=<><picture>
+            <source srcset={images.back_dark} media="(prefers-color-scheme: dark)"></source><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></picture></>
     rightTitle="Charng-Jyh Hu"
     feedCount=2
   }
@@ -72,7 +78,8 @@ export const CenterWithLocation = () => {
     location.startsWith('/user/likes/U06') || 
     location.startsWith('/user/reply/U06')
   ){
-    leftcontent=<><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></>
+    leftcontent=<><picture>
+            <source srcset={images.back_dark} media="(prefers-color-scheme: dark)"></source><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></picture></>
     rightTitle="Tzu-Miao Hung"
     feedCount=3
   }
@@ -80,7 +87,8 @@ export const CenterWithLocation = () => {
     location.startsWith('/user/likes/U07') || 
     location.startsWith('/user/reply/U07')
   ){
-    leftcontent=<><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></>
+    leftcontent=<><picture>
+            <source srcset={images.back_dark} media="(prefers-color-scheme: dark)"></source><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></picture></>
     rightTitle="MenHang Liu"
     feedCount=4
   }
@@ -88,7 +96,8 @@ export const CenterWithLocation = () => {
     location.startsWith('/user/likes/U08') || 
     location.startsWith('/user/reply/U08')
   ){
-    leftcontent=<><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></>
+    leftcontent=<><picture>
+            <source srcset={images.back_dark} media="(prefers-color-scheme: dark)"></source><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></picture></>
     rightTitle="Chengwu"
     feedCount=6
   }
@@ -96,7 +105,8 @@ export const CenterWithLocation = () => {
     location.startsWith('/user/likes/U09') || 
     location.startsWith('/user/reply/U09')
   ){
-    leftcontent=<><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></>
+    leftcontent=<><picture>
+            <source srcset={images.back_dark} media="(prefers-color-scheme: dark)"></source><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></picture></>
     rightTitle="Piying"
     feedCount=4
   }
@@ -104,7 +114,8 @@ export const CenterWithLocation = () => {
     location.startsWith('/user/likes/U10') || 
     location.startsWith('/user/reply/U10')
   ){
-    leftcontent=<><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></>
+    leftcontent=<><picture>
+            <source srcset={images.back_dark} media="(prefers-color-scheme: dark)"></source><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></picture></>
     rightTitle="ShengMing"
     feedCount=4
   }
@@ -112,7 +123,8 @@ export const CenterWithLocation = () => {
     location.startsWith('/user/likes/U11') || 
     location.startsWith('/user/reply/U11')
   ){
-    leftcontent=<><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></>
+    leftcontent=<><picture>
+            <source srcset={images.back_dark} media="(prefers-color-scheme: dark)"></source><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></picture></>
     rightTitle="Yiching"
     feedCount=8
   }
@@ -120,7 +132,8 @@ export const CenterWithLocation = () => {
     location.startsWith('/user/likes/U12') || 
     location.startsWith('/user/reply/U12')
   ){
-    leftcontent=<><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></>
+    leftcontent=<><picture>
+            <source srcset={images.back_dark} media="(prefers-color-scheme: dark)"></source><img src={images.back} className="middle-header-leftarea-img"></img><img className="hover-circle-header" onClick={()=>navigate("/")}></img></picture></>
     rightTitle="YiSheng"
     feedCount=9
   }

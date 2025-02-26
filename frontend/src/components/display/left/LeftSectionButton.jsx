@@ -13,6 +13,7 @@ export const LeftSectionButton = (props) => {
   //所在頁面為粗體
   const [profileBold, setProfileBold] = useState(false)
   const [mainBold, setMainBold] = useState(false)
+  const [isDarkMode, setIsDarkMode] = useState(false)
   
   //用useEffect封裝這個非同步函數, 不能夠寫在react元件上
   useEffect(()=> {
@@ -48,6 +49,22 @@ export const LeftSectionButton = (props) => {
   fetchUserID()
   },[])
   
+  // 檢查是否為 dark mode
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    setIsDarkMode(mediaQuery.matches);
+
+    // 偵聽顏色模式變化
+    const handleChange = (e) => {
+      setIsDarkMode(e.matches);
+    };
+    mediaQuery.addEventListener('change', handleChange);
+
+    // 清除監聽
+    return () => {
+      mediaQuery.removeEventListener('change', handleChange);
+    };
+  }, []);
 
 
   return (
@@ -79,7 +96,7 @@ export const LeftSectionButton = (props) => {
         navigate("/login")
       }
       }}>
-      <img className="left-section-button-icon" src={isClick? props.srcClick : props.src}></img>
+      <img className="left-section-button-icon" src={isClick? props.srcClick : isDarkMode ? props.srcBlack : props.src}></img>
       <span className={clsx("left-section-button-text", { bold: profileBold || mainBold })}>{props.title}</span>  
       <div className={`left-section-button-hover num-${props.id}`}></div>    
     </div>

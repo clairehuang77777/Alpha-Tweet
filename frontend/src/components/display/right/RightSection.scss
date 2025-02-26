@@ -129,7 +129,8 @@
 
 .feeds-RightTopArea {
   display: flex;
-  flex-direction: row
+  flex-direction: row;
+  align-items: center;
 }
 
 
@@ -521,7 +522,7 @@ input[type="checkbox"]:checked + label + .delete-btn {
 }
 .feeds-poster-name {
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
 }
 
 .feeds-poster-id {
@@ -592,7 +593,7 @@ input[type="checkbox"]:checked + label + .delete-btn {
 //skelton
 .card-skelton{
   display: flex;
-  border: 0.5px solid lightgrey;
+  border: 0.5px solid rgb(72, 67, 67);
   width: 600px;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -1149,6 +1150,70 @@ input[type="checkbox"]:checked + label + .delete-btn {
 .feeds-RightButtonArea-skelton .skeleton {
   width: 450px;
   height: 15px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .middle-header{
+  background-color: black;
+  border: 0px;
+  }
+
+  .followbox-right-button{
+    background-color: black
+  }
+  .feeds{
+    border:0px;
+  }
+
+  .post {
+    border: 0px;
+  }
+
+  .feeds-poster-heartNumber{
+    color: white;
+  }
+
+  .card-skelton {
+    border: 0px;
+  }
+
+  .middle-header-leftarea{
+    align-items: start;
+    padding-top: 15px;
+  }
+
+  .center-tab-bar-text-post,
+  .center-tab-bar-text-tweet,
+  .center-tab-bar-text-likes{
+      background-color: black;
+      color: white;
+    }
+
+  .Intro-username,
+  .Intro-user-follower-num,
+  .Intro-user-following-num,
+  .Intro-user-following,
+  .Intro-user-follower{
+    color: white;
+  }
+
+  .Intro{
+    border: 0px;
+  }
+
+  .left-section-container{
+    background-color: black;
+  }
+
+  .left-section-button-text,
+  .followbox-center-name{
+    color: white;
+  }
+
+  .post-brbar{
+  border:0px;
+  }
+
 }
 
 /*---------------------------------------*/

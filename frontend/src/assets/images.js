@@ -23,6 +23,13 @@ export const images = {
   setting_click:`${BASE_URL}setting_click.png`,
   user:`${BASE_URL}user.png`,
   user2:`${BASE_URL}user2.png`,
-  delete3:`${BASE_URL}delete3.png`
+  delete3:`${BASE_URL}delete3.png`,
+  heart_dark:`${BASE_URL}heart_dark.png`,
+  comment_dark:`${BASE_URL}comment_dark.png`,
+  setting_black:`${BASE_URL}setting_black.png`,
+  profile_black:`${BASE_URL}profile_black.png`,
+  logout_black:`${BASE_URL}logout_black.png`,
+  home_black:`${BASE_URL}home_black.png`,
+  back_dark:`${BASE_URL}back_dark.png`
 };
 
