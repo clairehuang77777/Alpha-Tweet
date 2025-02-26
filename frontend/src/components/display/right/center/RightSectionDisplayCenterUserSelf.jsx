@@ -16,13 +16,13 @@ export const RightSectionDisplayCenterUserSelf = () => {
   const userId = location.pathname.split("/").pop(); // 提取路徑最後一部分作為 UserID
 
   // 動態判斷
-  const EditBtnZoneProps =
-    userId === "U01" ? <EditBtnZoneEditUser /> : <EditBtnZoneSubscript />;
+  // const EditBtnZoneProps =
+  //   userId === "U01" ? <EditBtnZoneEditUser /> : <EditBtnZoneSubscript />;
 
   return (
     <>    
     <CenterWithLocation />
-    <CenterIntro editBtnZone={EditBtnZoneProps} />
+    <CenterIntro />
     <CenterTabBar/>
     <CenterFeedWithLocation/>
     </>

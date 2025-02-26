@@ -3,7 +3,7 @@ import { myIntroDataContext } from "../../../../../myIntroDataContext"
 import { useParams } from "react-router-dom"
 import { getSingleUserData } from "../../../../../../../backend/api/alphatwitter"
 
-export const CenterIntro = ({editBtnZone}) => {
+export const CenterIntro = () => {
 const {myIntroData, setMyIntroData} = useContext(myIntroDataContext)
 const {UserID} = useParams()
 const {LikerUserID} = useParams()
@@ -70,7 +70,6 @@ console.log(disPlayMyInfo.photoSrc)
         {!isloadedIntroPic && (<div className="placeholder-lazyloading-introPic"></div>)}
       </div>
       <div className="Intro-user-edit-btn-zone">
-        {editBtnZone}
       </div>
       <div className="Intro-usernameid">
         <div className="Intro-username">{disPlayMyInfo.UserName}</div>
