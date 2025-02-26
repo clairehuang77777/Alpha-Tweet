@@ -27,7 +27,7 @@ const{heartAUDY, setHeartAUDY} = useContext(popUpContext)
       if (isMounted) {
         setFeedsIFollow(userFollowingFeeds || [])
         setIsLoading(false)
-        setHeartAUD(false)
+        setHeartAUDY(false)
       }
       setFeedIsUpdate(false)
 
