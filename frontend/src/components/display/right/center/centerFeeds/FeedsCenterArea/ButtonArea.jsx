@@ -42,7 +42,7 @@ export const ButtonArea = ({item}) => {
     console.log(likeNum)
     //要把這個新的數字更新到資料庫
     try {
-      const res = await updateHeartNum(likeNum, item.PID)
+      const res = await updateHeartNum(likeNum, itemPID)
       console.log(res)
       if (res.data === "update succeed!"){
         //成功加入資料庫後, 把item.PID push進去陣列
