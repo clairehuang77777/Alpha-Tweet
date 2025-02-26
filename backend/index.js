@@ -433,7 +433,7 @@ app.post("/api/newHeartNum", async(req , res)=>{
 
   //把資料存進後端資料庫
     try {
-      const result = await pool.query(`UPDATE public."UserFollowingFeeds" SET "UserFollowingCountPostLike" = $1 WHERE "PID" = $2
+      const result = await pool.query(`UPDATE "UserFollowingFeeds" SET "UserFollowingCountPostLike" = $1 WHERE "PID" = $2
   `, [newlikeNum, newheartPID])
       console.log('[Update Result]:', result)
       res.json("update succeed!")
