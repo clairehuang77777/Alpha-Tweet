@@ -49,9 +49,9 @@ export const ButtonArea = ({item}) => {
         //如果已經按讚過，從紅心陣列中移除
         //如果還沒按讚過，加入紅心陣列
         if (isLiked){
-          setHeartAUDY(heartAUDY.filter((itemPID)=> itemPID !== item.PID))
+          setHeartAUDY(heartAUDY.filter((PID)=> PID !== itemPID))
         } else {
-          setHeartAUDY([...heartAUDY, item.PID])
+          setHeartAUDY([...heartAUDY, itemPID])
         }
         console.log(heartAUDY)
         //跳轉回userSelfPage
