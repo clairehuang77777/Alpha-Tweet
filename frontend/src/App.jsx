@@ -11,6 +11,7 @@ import { myFeedsContext } from './myFeedsContext'
 import { myLikesContext } from './myLikesContext'
 import { userIDContext } from './userIDContext'
 import {feedIsUpdateContext} from './feedIsUpdateContext'
+import { heartContext } from './heartContext'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
   const [feedIsUpdate, setFeedIsUpdate] = useState(false)
   const [deletePopUp, setDeletePopUp] = useState(false)
   const [deletePID, setDeletePID] = useState(null)
-  const [heartAUDY, setHeartAUDY] = useState([])
+  const [heartAUDY, setHeartAUDY] = useState([1])
   const [theCommentPost, setTheCommentPost] = useState({})
   const [hasNewReply,setHasNewReply]=useState(false)
 
@@ -35,7 +36,8 @@ function App() {
   return (
   <SkeletonTheme baseColor="#e0e0e0" highlightColor="#f0f0f0">
     <BrowserRouter basename={basename}>
-      <popUpContext.Provider value={{popUp, setPopUp, editMode, setEditMode, deletePopUp, setDeletePopUp, deletePID, setDeletePID, heartAUDY, setHeartAUDY, theCommentPost, setTheCommentPost,hasNewReply,setHasNewReply}}>
+      <heartContext.Provider value={{ heartAUDY, setHeartAUDY}}>
+      <popUpContext.Provider value={{popUp, setPopUp, editMode, setEditMode, deletePopUp, setDeletePopUp, deletePID, setDeletePID, theCommentPost, setTheCommentPost,hasNewReply,setHasNewReply}}>
       <userContext.Provider value={{users, setUsers}}>
       <feedsContext.Provider value={{feeds, setFeeds}}>
       <feedsIFollowContext.Provider value={{feedsIFollow, setFeedsIFollow}}>
@@ -69,6 +71,7 @@ function App() {
       </feedsContext.Provider>
       </userContext.Provider>
       </popUpContext.Provider>
+      </heartContext.Provider>
     </BrowserRouter>
   </SkeletonTheme>
   )

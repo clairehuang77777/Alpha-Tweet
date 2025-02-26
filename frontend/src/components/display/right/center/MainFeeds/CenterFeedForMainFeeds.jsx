@@ -6,14 +6,14 @@ import { feedIsUpdateContext } from "../../../../../feedIsUpdateContext"
 import { FeedSkelton } from "../centerFeeds/FeedSkelton"
 import "react-loading-skeleton"
 import { ButtonArea } from "../centerFeeds/FeedsCenterArea/ButtonArea"
-import { popUpContext } from "../../../../../popUpContext"
+import { heartContext } from "../../../../../heartContext"
 
 export const CenterFeedForMainFeed = ({ RightCenterReplyArea, RightCenterButtonArea }) => {
 const {feedsIFollow, setFeedsIFollow} = useContext(feedsIFollowContext)
 const {feedIsUpdate, setFeedIsUpdate} = useContext(feedIsUpdateContext)
 //使用reactloading
 const [isLoading, setIsLoading]=useState(true)
-const{heartAUDY, setHeartAUDY} = useContext(popUpContext)
+const{heartAUDY, setHeartAUDY} = useContext(heartContext)
 
 
   useEffect(()=> {
@@ -27,7 +27,6 @@ const{heartAUDY, setHeartAUDY} = useContext(popUpContext)
       if (isMounted) {
         setFeedsIFollow(userFollowingFeeds || [])
         setIsLoading(false)
-        setHeartAUDY(false)
       }
       setFeedIsUpdate(false)
 

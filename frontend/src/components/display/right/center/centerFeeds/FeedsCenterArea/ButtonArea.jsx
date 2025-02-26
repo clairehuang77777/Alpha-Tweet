@@ -5,6 +5,7 @@ import {useContext} from "react"
 import { updateHeartNum, getFeedByPID } from "../../../../../../../../backend/api/alphatwitter"
 import { useNavigate } from "react-router"
 import { clsx } from "clsx"
+import { heartContext } from "../../../../../../heartContext"
 
 export const ButtonArea = ({item}) => {
   const location = useLocation()
@@ -12,7 +13,7 @@ export const ButtonArea = ({item}) => {
   let likeNum = null
 
   //取得按讚的貼文ID
-  const{heartAUDY, setHeartAUDY} = useContext(popUpContext)
+  const{heartAUDY, setHeartAUDY} = useContext(heartContext)
   const{theCommentPost, setTheCommentPost} = useContext(popUpContext)
 
   console.log(heartAUDY)

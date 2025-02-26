@@ -10,6 +10,7 @@ import { getSingleUserFeedFromUserFollowingFeed, getSingleUserLike, getSingleUse
 import { FeedSkelton } from "./FeedSkelton";
 import { DeletePostBtn } from "./FeedsCenterArea/DeletePostBtn";
 import { popUpContext } from "../../../../../popUpContext";
+import { heartContext } from "../../../../../heartContext";
 
 export const CenterFeedWithLocation = () => {
   const { myFeeds, setMyFeeds } = useContext(myFeedsContext);
@@ -18,7 +19,7 @@ export const CenterFeedWithLocation = () => {
   const { UserID, LikerUserID, ReplierID, PID } = useParams();
   const {deletePopUp} = useContext(popUpContext)
   const{deletePID} = useContext(popUpContext)
-  const{heartAUDY, setHeartAUDY} = useContext(popUpContext)
+  const{heartAUDY, setHeartAUDY} = useContext(heartContext)
   const{hasNewReply,setHasNewReply} = useContext(popUpContext)
 
   // 本地状态来决定显示的内容
@@ -124,7 +125,6 @@ export const CenterFeedWithLocation = () => {
             setRightCenterButtonContent(<ButtonArea />);
             setRightCenterReplyContent(null);
             setIsLoading(false)
-            setHeartAUDY(false)
             }
           }
       }
