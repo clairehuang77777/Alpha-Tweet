@@ -189,7 +189,7 @@ export async function deleteSingleFeed(PID){
 //更新愛心數字
 export async function updateHeartNum(likeNum, heartPID){
   try{
-    const res = await axios.post('/api/newHeartNum',{
+    const res = await axios.post(`${base_URL}/api/newHeartNum`,{
       likeNum,
       heartPID
     })
