@@ -88,6 +88,7 @@ Error generating stack: `+a.message+`
   background-color: #ff6600;
   color: white;
   padding: 5px;
+  height: 50px;
 
   /* 手機版調整 */
   @media (max-width: 480px) {
