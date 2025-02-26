@@ -124,7 +124,7 @@ export const CenterFeedWithLocation = () => {
             setRightCenterButtonContent(<ButtonArea />);
             setRightCenterReplyContent(null);
             setIsLoading(false)
-            setHeartAUD(false)
+            setHeartAUDY(false)
             }
           }
       }
