@@ -10,19 +10,14 @@
 - 🚀 The project is live! Access it now 🚀 <a href="https://clairehuang77777.github.io/Alpha-Tweet/login">here</a>.
 
 ## Features
-- Browse feeds and interact with posts.
-- View personal pages and follow other users.
-- Backend management for user and feed data.
-- User can login via test account.
-    ```    
-    // Test Account #1
-    Account: claire
-    Password: abc123
-    
-    // Test Account #2
-    Account: rose
-    Password: 123
-- Register a new account
+- Login in (test account: claire / abc123)
+- Press Likes / Cancel Likes
+- Create Post
+- Leave a comment
+- Browse Feeds
+- Support Dark Mode
+- Support Lazy loading
+
 
 ## Build With
 - **Frontend**: React with Vite
@@ -36,19 +31,19 @@
 
 
 ## Screenshot
-- Browse Feeds & Browse Personal Page  <br/>
-  ![Browse](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHpsMDM4OXU4bXdzN3pkNHQ3ZXkzejhydmh5cXEzdWNmNjltMjJmayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/14j9usUZ8WuRokk4WZ/giphy.gif)
-  ![PeronalPage](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExajRheWE5MzdibGxmbzl6Y2FwMHVsN293OWVpd3NjZXJsc3FvNGxuZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gGOAOPUAN0cRX179k7/giphy.gif)
-- Browse other's Personal Page <br/>
-  ![others](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTVkMjY4cTd1M3l0bnptMnZhb3NhcHVvejdoN2FocGs5NzJ0dWhkZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LuguYRbI8po32d6T5W/giphy.gif)
-- Backend management (Browse All User List/Browse All Feeds ) <br/>
-  ![UserList](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHVrbXB0cXEzaDAxeHFvZWQ3dm03bTVlZXkzbmx5dnd3c2EwaDdtNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ibwhBfhF50Sxuh5cGN/giphy.gif)
-  ![FeedsList](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXd2b3Y2YTE2dzBncGRtZHBzNzRja25uYTB3NnF6Mzc0emI5ZTlvZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZDMPEXXHDw1TG72d8A/giphy.gif)
-- Login <br/>
-- ex1. User account rose login<br/> ![roseLogin](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTJrMGxwN3kzanoxZGxqcmZha25hOHdyc2FyajV5dTUwM2U0M3AwaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lywMDQR64dK3CjOoBz/giphy.gif)
-- ex2. User accoun claire login<br/> ![claireLogin](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcGQyN25scDdrMXNtOGJqaDdhYjl4eXI3eWU5NnFvOHUwdXJ3ZW5rNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jU6tftk5E7qZ2PmNtl/giphy.gif)
-  
-- Post/ Follow others/ being followed
+- User Login  <br/>
+  ![Login](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdml5czlhOHg4MndtZ3B2bzE2em1ybTl0aWF1cjloNThubWxxZ2g5OSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xdYWahjAoq1l6RsSOJ/giphy.gif)
+- Press Likes / Cancel Likes
+  ![PressLikes](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2wyYm5id3lnMTVtZ2hvNGFidm9sZ28xaThrZGt6bXdjcTR4NHRvayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NHotMRcyjDgcU9rR1G/giphy.gif)
+- Create Post
+![CreatePost](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExamp2cTRwcGVleDhidW9zeXNhYnQydGFucmp4MzE4Z3oybTFnemdpayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1DLsm9UcaSzgvippaT/giphy.gif)
+- Leave a comment
+![comment](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3U1eGp3NzRia2diajNyc3N4bnE4NWMzbWpna3dkY3BrbzN3ZDQxaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/h47nPAeEBIj1OujC4m/giphy.gif)
+- Browse Feeds
+![BrowseFeeds](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnVucXRvaDRoMjg3ZnpyZ2lhOWhja3ltaTM3czlhejJ4bjZmanF0MSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/cAES74hEtZdltL3LYq/giphy.gif)
+- Support Dark Mode & Lazy loading
+![Support Dark Mode](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzdwMGI3OHl2Ym0yNmVubmE4OGdycTB6Ym16bTcyMjcwYXVsY293YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lJPiTwkHY9SHII65Ro/giphy.gif)
+
 
 
 ## API Documentation
