@@ -33,15 +33,15 @@
 ## Screenshot
 - User Login  <br/>
   ![Login](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdml5czlhOHg4MndtZ3B2bzE2em1ybTl0aWF1cjloNThubWxxZ2g5OSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xdYWahjAoq1l6RsSOJ/giphy.gif)
-- Press Likes / Cancel Likes
+- Press Likes / Cancel Likes <br/>
   ![PressLikes](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2wyYm5id3lnMTVtZ2hvNGFidm9sZ28xaThrZGt6bXdjcTR4NHRvayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NHotMRcyjDgcU9rR1G/giphy.gif)
-- Create Post
+- Create Post <br/>
 ![CreatePost](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExamp2cTRwcGVleDhidW9zeXNhYnQydGFucmp4MzE4Z3oybTFnemdpayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1DLsm9UcaSzgvippaT/giphy.gif)
-- Leave a comment
+- Leave a comment <br/>
 ![comment](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3U1eGp3NzRia2diajNyc3N4bnE4NWMzbWpna3dkY3BrbzN3ZDQxaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/h47nPAeEBIj1OujC4m/giphy.gif)
-- Browse Feeds
+- Browse Feeds <br/>
 ![BrowseFeeds](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnVucXRvaDRoMjg3ZnpyZ2lhOWhja3ltaTM3czlhejJ4bjZmanF0MSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/cAES74hEtZdltL3LYq/giphy.gif)
-- Support Dark Mode & Lazy loading
+- Support Dark Mode & Lazy loading <br/>
 ![Support Dark Mode](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzdwMGI3OHl2Ym0yNmVubmE4OGdycTB6Ym16bTcyMjcwYXVsY293YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lJPiTwkHY9SHII65Ro/giphy.gif)
 
 
