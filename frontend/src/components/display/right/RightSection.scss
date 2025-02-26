@@ -857,6 +857,7 @@ input[type="checkbox"]:checked + label + .delete-btn {
   flex-direction: row;
   width: 600px;
   border: 0.5px solid lightgrey;
+  position: relative;
 }
 
 .center-tab-bar-text-post {
@@ -877,7 +878,7 @@ input[type="checkbox"]:checked + label + .delete-btn {
   height: 54px;
   background-color: lightgrey;
   position: absolute;
-  top: 470px;
+  top: 0px;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s, visibility 0.3s;
@@ -1164,7 +1165,8 @@ input[type="checkbox"]:checked + label + .delete-btn {
   .followbox-right-button{
     background-color: black
   }
-  .feeds{
+  .feeds,
+  .tabBar{
     border:0px;
   }
 
@@ -1217,6 +1219,15 @@ input[type="checkbox"]:checked + label + .delete-btn {
   border:0px;
   }
 
+  .footer-reply-area{
+    background-color: black;
+    border: 0px;
+    box-shadow: 2px 2px 7px 2px #656363;
+  }
+
+  .feeds-poster-heartIcon.red{
+    height: 18px;
+  }
 }
 
 /*---------------------------------------*/
