@@ -16,6 +16,7 @@ if (location.pathname.startsWith("/user/reply")) {
     }
 } else if (location.pathname.startsWith("/user/comment/")){
   const postTime = item.commentDate;
+  console.log(item.commentDate)
  if (postTime) { // 同樣做有效性檢查
         formattedTimeUser = new Date(postTime).toISOString().replace('T', ' ').slice(0, 16);
     }
@@ -26,7 +27,8 @@ if (location.pathname.startsWith("/user/reply")) {
     }
   }
 
-
+  console.log(item.commentUserIDname)
+  
   return (
       <div className="feeds">
         <div className="feeds-LeftArea">

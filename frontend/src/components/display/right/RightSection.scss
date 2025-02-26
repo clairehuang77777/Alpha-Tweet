@@ -153,7 +153,6 @@
   flex-direction: row;
   color: grey;
   font-size: 0.8rem;
-  height: 30px;
 }
 
 .feeds-poster-ReplyIcon, .feeds-poster-heartIcon {
@@ -176,6 +175,7 @@
   justify-content: flex-start;
   align-items: center;
   width: 60px;
+  height: 30px;
 }
 
 .feeds-poster-ReplyArea {
@@ -232,30 +232,32 @@
 
 //post--reply -- action
 .footer-reply-area{
-  position: fixed;
-    bottom: 60px;
     background-color: white;
-    width: 100%;
+    width: 600px;
     border: 0.8px solid lightgray;
-    box-shadow: 2px 2px 7px 2px lightgrey;
     display: flex;
     align-items: center;
+    height: 65px;
 }
 
 #footerReply{
   height: 30px;
   margin: 10px;
   width: 70%;
+  height: 40px;
+  margin-left: 10px;
 }
 
 .footerReply-submit-btn{
   background: orangered;
-  height: 30px;
-  border-radius: 5px;
-  box-shadow: 2px 2px 7px 2px lightgrey;
-  width: 15%;
+  border-radius: 40px;
   color: white;
   padding: 0px;
+  width: 100px;
+  padding-left: 0px;
+  margin-left: 10px;
+  height: 40px;
+      
 }
 
 
@@ -1224,4 +1226,20 @@ input[type="checkbox"]:checked + label + .delete-btn {
   textarea{
       font-size: 16px;
     }
+
+  //手機版reply-area
+    .footer-reply-area {
+      position: fixed;
+      bottom: 60px;
+      background-color: white;
+      width: 100%;
+      border: 0.8px solid lightgray;
+      box-shadow: 2px 2px 7px 2px lightgrey;
+      display: flex;
+      align-items: center;
+    }
+
+    .footerReply-submit-btn{
+        margin-right: 20px;
+      }
 }
