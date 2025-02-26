@@ -1219,7 +1219,8 @@ input[type="checkbox"]:checked + label + .delete-btn {
   border:0px;
   }
 
-  input {
+  input,
+  textarea {
     color: black;
   }
   
