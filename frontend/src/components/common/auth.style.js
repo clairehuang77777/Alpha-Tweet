@@ -40,3 +40,7 @@ export const AuthLink = styled.a`
   color:lightblue;
 `
 
+export const AuthErrorText = styled.p`
+  font-size:1.1rem;
+  color:red;
+`

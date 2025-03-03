@@ -1,15 +1,17 @@
-import {Pagecontainer, InputBoxConatiner, AuthButton, AuthLink } from '../components/common/auth.style'
+import {Pagecontainer, InputBoxConatiner, AuthButton, AuthLink,AuthErrorText } from '../components/common/auth.style'
 import { AuthInput } from '../components/AuthInput'
 import { AClogo } from '../assets/image/AC-logo'
 import './FormLikePage.css'
 import { useNavigate } from "react-router-dom"
 import { useState, useEffect } from 'react'
 import { UserLoginRequest } from '../../../backend/api/alphatwitter'
+import { clsx } from "clsx"
 
 export const LoginPage = () =>{
   const navigate = useNavigate()
   const [userTypeUserName , setUserTypeUserName ] = useState('')
   const [userTypePW, setUserTypePW] = useState('')
+  const [loginStatus, setLoginStatus] = useState(false)
 
   useEffect(()=>{
     const token = localStorage.getItem("token")
@@ -50,6 +52,7 @@ export const LoginPage = () =>{
       }
     }
     catch(error){
+      setLoginStatus(true)
       console.error(error)
     }
   }
@@ -70,6 +73,9 @@ export const LoginPage = () =>{
       <div className='loginButtonLink'>
       <AuthLink onClick={handleRegisterClick}>註冊Alphatwitter</AuthLink>
       <AuthLink onClick={handleBackendLoginClick}>後台登入</AuthLink>
+      </div>
+      <div className={clsx('failed-message-text',{"show":loginStatus})}>
+      <AuthErrorText>登入失敗，再試一次</AuthErrorText>
       </div>
     </Pagecontainer>
   )
